@@ -1,0 +1,65 @@
+{{!< layout}} 
+{{#extend "pageName"}}Profile{{/extend}} 
+{{#extend "customCSS"}} 
+    <link rel="stylesheet" href="/css/complete.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/profile.css">
+    <link rel="stylesheet" href="/css/table.css">
+{{/extend}}
+
+{{#extend "heroTitle"}}Profile Page{{/extend}}
+
+{{#extend "breadcrumbs"}}
+<a href="">Home</a> / Profile Page
+{{/extend}}
+
+{{#extend "body"}}
+<section class="section one container">
+    <div class="left">
+        <img src="{{ emp.picture }}" alt="">
+        <div class="social-btns">
+            <span><i class="fab fa-facebook-f"></i></span>
+            <span><i class="fab fa-twitter"></i></span>
+            <span><i class="fab fa-google-plus-g"></i></span>
+            <span><i class="fab fa-linkedin-in"></i></span>
+        </div>
+        {{!-- <div><i class="fas fa-phone"></i>+977-9812334618</div>
+        <div><i class="fas fa-envelope"></i>uj.virtualco.org</div> --}}
+    </div>
+    <div class="right" style="text-align:left;">
+        {{#if myProfile}}
+            <a class="btn" href="/employee/complete"><i class="fa fa-edit"></i> &nbsp;&nbsp;Edit Profile</a><br><br>
+        {{/if}}
+        {{#if company}}
+            <a class="btn" href="/chat/{{emp.userId}}/{{myID}}/page"><i class="fa fa-envelope"></i> &nbsp;&nbsp;Send Message</a><br><br>
+        {{/if}}
+        <table class="table table-responsive">
+                <td><b>Full Name</b></td>
+                <td>{{ emp.full_name }}</td>
+            </tr>
+            <tr>
+                <td><b>Preferred Category</b></td>
+                <td>{{{ emp.preferred_category }}}</td>
+            </tr>
+            <tr>
+                <td><b>Academic Qualification</b></td>
+                <td>{{{ emp.academic_qualification }}}</td>
+            </tr>
+            <tr>
+                <td><b>City</b></td>
+                <td>{{{ emp.city }}}</td>
+            </tr>
+            <tr>
+                <td><b>Key Skills</b></td>
+                <td>{{{ emp.keywords }}}</td>
+            </tr>
+            <tr>
+                <td style="vertical-align:middle;"><b>Resume</b></td>
+                <td style="vertical-align:middle;">
+                    <a href="/uploads/employees/resumes/{{emp.userId}}.pdf"><img src="/images/pdf.png" alt="" srcset="" style="height: 48px;"></a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+{{/extend}}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/0.3.16/peer.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/socket.io.js"></script>
+    <script>
+        function getParameterByName(name) {
+            if (name !== "" && name !== null && name != undefined) {
+                name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+                var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                    results = regex.exec(location.search);
+                return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+            } else {
+                var arr = location.href.split("/");
+                return arr[arr.length - 1];
+            }
+        }
+
+        function popup(text){
+            $('.alert').html(text);
+            $('.overlay').fadeIn(150)
+            $('.alert').fadeIn(150)
+        }
+
+        var socket = io('http://localhost:9119');
+
+        socket.on('connect', function () {
+        });
+
+        socket.on('disconnect', function () {
+        });
+    </script>
+</head>
+<body>
+    <video muted id="myVideo" style="border:1px solid #eee;border-radius: 5px; width: 112.5px;height: 150px; position: fixed; top:1rem; right: 1rem;z-index: 3;background: #FFF;"></video>
+    <video id="notMyVideo" style="border:1px solid #eee;position: fixed; top:0;left:0;bottom: 0;right: 0;height: 100%;width: 100%;z-index: 1;background: #FFF;"></video>
+    <div style="position: fixed;bottom:0.5rem;left:0;right:0;text-align: center;z-index: 2;">
+        <img src="call-end.png" style="height:64px;" onclick="window.close();">
+    </div>
+
+    <div class="overlay" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.4);z-index:4;" onclick="$('.alert').fadeOut(300);$('.overlay').fadeOut(300);">
+        <div class="alert" style="position:fixed;z-index: 5;top: 35%;left:50%;width: 70%;padding: 1rem;transform: translate(-50%,-50%);text-align: center;background: #FFF;border: 1px solid #eee;border-radius: 5px;">
+            Connecting video call...
+        </div>
+    </div>
+    <script>
+        var peer = new Peer(); 
+        var myVideo = false;
+        var myID = "";
+
+        peer.on('open', function (id) {
+            //alert(id);
+            console.log(id);
+            call(getParameterByName("callID"))
+        });
+
+        navigator.getMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+ 
+        function call(peerID){
+            navigator.getMedia({ video: true, audio: true }, function (stream) {
+                if (!myVideo) {
+                    document.getElementById("myVideo").srcObject = stream;
+                    document.getElementById("myVideo").play();
+                    myVideo = true;
+                }
+                var call = peer.call(peerID, stream);
+                call.on('stream', function (remoteStream) {
+                    $('.alert').hide(); $('.overlay').hide();
+                    document.getElementById("notMyVideo").srcObject = remoteStream;
+                    document.getElementById("notMyVideo").play();
+                });
+            }, function (err) {
+                console.log('Failed to get local stream', err);
+            });
+        }
+
+        peer.on('call', function (call) {
+            navigator.getMedia({ video: true, audio: true }, function (stream) {
+                if (!myVideo) {
+                    document.getElementById("myVideo").srcObject = stream;
+                    document.getElementById("myVideo").play();
+                    myVideo = true;
+                }
+                call.answer(stream); // Answer the call with an A/V stream.
+                call.on('stream', function (remoteStream) {
+                    document.getElementById("notMyVideo").srcObject = remoteStream;
+                    document.getElementById("notMyVideo").play();
+                    // Show stream in some video/canvas element.
+                });
+            }, function (err) {
+                console.log('Failed to get local stream', err);
+            });
+        });
+        
+
+    </script>
+</body>
+</html>

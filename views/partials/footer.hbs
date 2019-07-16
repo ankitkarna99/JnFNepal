@@ -1,0 +1,95 @@
+    <footer class="main--footer">
+        <div class="container">
+            <div class="cities item">
+                <div class="title">CITIES</div>
+                <ul>
+                    <li><a href="/jobs/city/Kathmandu">Kathmandu</a></li>
+                    <li><a href="/jobs/city/Pokhara">Pokhara</a></li>
+                    <li><a href="/jobs/city/Dharan">Dharan</a></li>
+                    <li><a href="/jobs/city/Itahari">Itahari</a></li>
+                    <li><a href="/jobs/city/Jhapa">Jhapa</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-categories item">
+                <div class="title">CATEGORIES</div>
+                <ul>
+                    <li><a href="/jobs/category/Healthcare">Healthcare</a></li>
+                    <li><a href="/jobs/category/Automobile">Automobile</a></li>
+                    <li><a href="/jobs/category/Construction">Construction</a></li>
+                    <li><a href="/jobs/category/Computer &amp; IT">Computer &amp; IT</a></li>
+                    <li><a href="/jobs/category/Finance">Finance</a></li>
+                </ul>
+            </div>
+
+            <div class="newsletter item">
+                <div class="title">NEWSLETTER</div>
+                <div>Keep up with our always upcoming news and updates. Enter your e-mail and subscribe to our
+                    newsletter.</div>
+                <input type="text" placeholder="Type your email">
+            </div>
+
+            <div class="contacts">
+                <img src="/images/logo.png" alt="">
+                <div class="social">
+                    <i class="fab fa-facebook-square"></i>
+                    <i class="fab fa-twitter-square"></i>
+                    <i class="fab fa-google-plus-square"></i>
+                    <i class="fab fa-youtube"></i>
+                    <i class="fab fa-instagram"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div style="position:fixed; bottom: 1rem;right:1rem;padding:1.1rem 1.25rem;border-radius:50%;background:#8ac03c;color:white;font-size:2rem;z-index: 3;box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);cursor: pointer;" onclick="location.href='/messages'">
+        <i class="fa fa-envelope"></i>
+        <span id="msgCount" style="padding:0.25rem 0.5rem;position: absolute;top:0;right:-0.5rem;background:#ffdb13;color:black;font-size: 16px;border-radius:50%;">0</span>
+    </div>
+
+    <div class="elevenSensor"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.11.0/sweetalert2.all.min.js"></script>
+    <script src="/js/nav_bar.js"></script>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/socket.io.js"></script>
+    <script>
+        function getMsgCount(){
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/msgCount');
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    var count = JSON.parse(xhr.responseText).count;
+                    if (count > 0){
+                        document.getElementById("msgCount").innerHTML = "&nbsp;" + count + "&nbsp;";
+                    } else {
+                        document.getElementById("msgCount").innerHTML = '0';
+                    }
+                }
+            };
+            xhr.send();
+        }
+
+        getMsgCount();
+        setInterval(getMsgCount, 8000);
+    </script>
+    <script>
+        function makeToast(type, msg) {
+            swal({
+                type: type,
+                title: msg,
+                toast: true,
+                position: 'bottom-start',
+                showConfirmButton: false,
+                timer: 8000
+            });
+        }
+    </script>
+    {{#block "customJS"}}
+    {{/block}}
+    
+    {{> flash }}
+    {{> socket }}
+</body>
+
+</html>

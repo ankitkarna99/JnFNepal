@@ -1,0 +1,20 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Full Name</th>
+            <th>City</th>
+            <th>Preferred Category</th>
+            <th>Academic Qualification</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each employees}}
+        <tr>
+            <td class="font-weight-bold text-primary p"><a href="/employee/profile/{{ this.empID }}">{{{ this.full_name }}}</a></td>
+            <td>{{{ this.city }}}</td>
+            <td>{{{ this.preferred_category }}}</td>
+            <td>{{ this.academic_qualification }}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

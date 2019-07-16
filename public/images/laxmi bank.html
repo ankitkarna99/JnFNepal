@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style> <meta charset="utf-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width,initial-scale=1"> <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags --> <title>eSewa</title> <!-- Bootstrap --> <link rel="stylesheet" type="text/css" href="laxmi%20bank_files/esewa-components-2.css"> <link href="laxmi%20bank_files/bootstrap.css" rel="stylesheet"> <link href="laxmi%20bank_files/normalize.css" rel="stylesheet"> <link href="laxmi%20bank_files/user.css" rel="stylesheet"> <link href="laxmi%20bank_files/ec-payment-components-1.css" rel="stylesheet"> <link href="laxmi%20bank_files/moofonts.css" rel="stylesheet"> <link href="laxmi%20bank_files/user-module.css" rel="stylesheet"> <link href="laxmi%20bank_files/css.css" rel="stylesheet"> <link rel="stylesheet" href="laxmi%20bank_files/myriad.css"> <link rel="stylesheet" href="laxmi%20bank_files/ec-shared-1.css"> <link rel="stylesheet" href="laxmi%20bank_files/font-awesome.css"> <link rel="stylesheet" href="laxmi%20bank_files/select2.css"> <link rel="stylesheet" href="laxmi%20bank_files/selectize.css"> <link rel="import" content="text/html" async="" href="https://cdn.esewa.com.np/ui/html/analaytics/analytics_content.html"> <!----> <!--<script src="common/css/select2.css"></script>--> <!--<script src="common/css/selectize.default.css"></script>--> <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries --> <!-- WARNING: Respond.js doesn't work if you view the page via file:// --> <!--[if lt IE 9]>
+
+
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]--> <script type="text/javascript" async="" src="laxmi%20bank_files/conversion_async.js"></script><script type="text/javascript" async="" src="laxmi%20bank_files/analytics.js"></script><script type="text/javascript" async="" src="laxmi%20bank_files/ga.js"></script><script src="laxmi%20bank_files/1637727613162908.js" async=""></script><script async="" src="laxmi%20bank_files/fbevents.js"></script><script src="laxmi%20bank_files/vendor.js"></script> <!-- <link rel="stylesheet" href="common/css/bootstrap.min.css">--> <!-- Google web fonts
+    ============================================ --> <link rel="stylesheet" href="laxmi%20bank_files/vendor.css">  <script src="laxmi%20bank_files/a"></script></head><body ng-app="esewaCustomerApp" class="ng-scope modal-open"> <!--Toll Free Number Start--> <div class="toll-container"> <div id="but"><label><i class="glyphicon glyphicon-earphone" style="font-size: 18px"></i></label></div> <div id="mydiv" style="display: none; font-size: 3em; width: 100%; opacity: 0; left: 100px; border-width: 10px;"> <div class="toll-free-content pn text-center"> <h5 class="text-center mn pr25">Toll Free Number</h5> <h4 class="ph15 pvn" style="font-size: 30px">1660-01-02121<br> 9804442435</h4> </div> </div> </div> <!--Toll Free Number End--> <!-- *************************************************************** --> <div> <!-- nav container --> <div class="row top-navigation-bar"> <!-- ngInclude: --><ng-include src="'common/nav_container.html'" ng-controller="InformationController" class="ng-scope"><div class="container-fluid nav-main-bg navbar-fixed-top ng-scope">
+    <div class="container tab-container mobile-container tp0">
+        <div class="row">
+            <div class="navbar-header col-lg-2 col-md-2 col-sm-2 top-toolbar">
+                <button type="button" class="navbar-toggle collapsed top-toggle loggedinProfile ng-hide" ng-show="!isLoggedIn()" ng-class="{loggedinProfile : isLoggedIn()}" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span ng-show="!isLoggedIn()" class="ng-hide"><i class="glyphicon glyphicon-user" style="color:#ccc;"></i><span style="color:#ccc;"> Sign in</span></span>
+                    <!--<span  ng-show="isLoggedIn()"><i class="glyphicon glyphicon-user user-profile" style="color:#ccc;"></i></span>
+                   --> <!--<span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>-->
+                </button>
+
+                <a class="navbar-brand" ng-click="goToState(StateConstant.LOGIN)" title="eSewa" href="https://www.esewa.com.np/">
+                    <img style="margin-top: -7px;" class="img-responsive" src="laxmi%20bank_files/esewa_logo.png" alt="eSewa">
+                </a>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-5 search-responsive col-xs-12 pln">
+                <div id="wrap-search" class="collapse navbar-collapse navbar-responsive-collapse custom-navbar-collapse">
+                    <!-- ngInclude: --><ng-include src="'user/merchant/payments/views/product_search.html'" class="ng-scope"><form class="clearfix search ng-pristine ng-scope ng-valid-editable ng-invalid ng-invalid-required" id="searchForm" ng-controller="ProductSearchController"> <div class="col-sm-12"> <input type="stext" id="search" placeholder="Search services/merchant by tags (e.g. adsl)" name="merchantId" tabindex="1" class="user-search ng-pristine ng-untouched ng-valid-editable ng-empty ng-invalid ng-invalid-required" ng-model="product" typeahead-loading="searching" typeahead-editable="false" typeahead-min-length="3" typeahead-wait-ms="500" typeahead-on-select="onProductSelected(product.code)" ng-required="true " typeahead="product as product.name for product in search($viewValue)" typeahead-template-url="customTemplate.html" autocomplete="off" style="display: block !important" aria-autocomplete="list" aria-expanded="false" aria-owns="typeahead-28-8267" required="required"><ul class="dropdown-menu ng-isolate-scope ng-hide" ng-show="isOpen() &amp;&amp; !moveInProgress" ng-style="{top: position().top+'px', left: position().left+'px'}" style="display: block;" role="listbox" aria-hidden="true" typeahead-popup="" id="typeahead-28-8267" matches="matches" active="activeIdx" select="select(activeIdx)" move-in-progress="moveInProgress" query="query" position="position" template-url="customTemplate.html">
+    <!-- ngRepeat: match in matches track by $index -->
+</ul> <!--<input id="search_submit" value="Rechercher" type="submit">--> <button id="search_submit" value="Rechercher" class="search-submit ripple" type="submit"><i class="glyphicon glyphicon-search"></i></button> <script type="text/ng-template" id="customTemplate.html"><a ng-if="match.model.redirect" target="_blank" rel="noreferrer" ng-href="{{match.model.url | UrlCode}}">
+                <img src="{{match.model.image}}" width="16"> {{match.model.name}}
+            </a>
+            <a ng-if="!match.model.redirect">
+                <img src="{{match.model.image}}" width="16"> {{match.model.name}}
+            </a></script> </div> <!-- ngInclude: --><ng-include src="'html/analaytics/facebook_search_trakcer.html' | cdn" class="ng-scope"><div ng-if="searching">
+        <script>fbq('track','Search',{search_string:$('#search').val(),content_ids:['1234','2424','1318'],content_type:'product'});</script>
+
+    </div>
+</ng-include> </form></ng-include></div>
+            </div>
+
+            <div class="col-lg-5 col-md-5 col-sm-5 login-responsive col-xs-12 text-right ng-scope" ng-controller="AuthController">
+                <!-- ngInclude: --><ng-include src="'https://cdn.esewa.com.np/ui/html/offers/user/offer_dropdown.html'" ng-hide="!isLoggedIn()" class="ng-scope"><!-- ngInclude: --><ng-include src="'html/offers/offer_dropdown.html' | cdn" class="ng-scope">
+<div class="dropdown dropdown-offer offer-dropdown ng-scope" style="display:inline-block;margin-top:9px;">
+    <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-gift ic-offer-d"></i>Offers
+    </button>
+    <span class="caret"></span>
+    <ul class="dropdown-menu offer-drop-menu">
+        <div class="offer-tb"></div>
+        <div class="offer-sb"></div>
+        <div class="offer-block">
+            <!-- ngRepeat: offer in offerList --><li ng-repeat="offer in offerList" class="ng-scope">
+                <a ui-sref="offerDetails({'product_name': offer.productCode })" href="#/offer_details/sasto_ticket_offer">
+                    <div class="offer-container">
+                                        <span class="icon-offer">
+                                            <img ng-src="https://cdn.esewa.com.np/ui/html/offers/icon/sastotkt.png" src="laxmi%20bank_files/sastotkt.png">
+                                        </span>
+                        <div class="offer-d">
+                            <strong class="ng-binding">Get Rs. 200 Cashback on Sasto Tickets</strong>
+                            <div class="offer-descp ng-binding">Book an International Flight from Sasto Tickets and get Rs. 200 Cashback on every transaction.</div>
+                            <div class="offer-date-time ng-binding">9 Jan 2018</div>
+                        </div>
+                    </div>
+                </a>
+            </li><!-- end ngRepeat: offer in offerList --><li ng-repeat="offer in offerList" class="ng-scope">
+                <a ui-sref="offerDetails({'product_name': offer.productCode })" href="#/offer_details/qatar_airline_offer">
+                    <div class="offer-container">
+                                        <span class="icon-offer">
+                                            <img ng-src="https://cdn.esewa.com.np/ui/html/offers/icon/mero_flight_icon.png" src="laxmi%20bank_files/mero_flight_icon.png">
+                                        </span>
+                        <div class="offer-d">
+                            <strong class="ng-binding">Win FREE round ticket of Qatar Airways </strong>
+                            <div class="offer-descp ng-binding">Book Qatar Airways &#9992;ticket from @meroflight.com and stand a chance to win 1 FREE round ticket of Qatar Airways</div>
+                            <div class="offer-date-time ng-binding">8 Jan 2018</div>
+                        </div>
+                    </div>
+                </a>
+            </li><!-- end ngRepeat: offer in offerList --><li ng-repeat="offer in offerList" class="ng-scope">
+                <a ui-sref="offerDetails({'product_name': offer.productCode })" href="#/offer_details/midas_offer">
+                    <div class="offer-container">
+                                        <span class="icon-offer">
+                                            <img ng-src="https://cdn.esewa.com.np/ui/images/merchants/midas-1.png" src="laxmi%20bank_files/midas-1.png">
+                                        </span>
+                        <div class="offer-d">
+                            <strong class="ng-binding">MiDas eCLASS</strong>
+                            <div class="offer-descp ng-binding">&#2340;&#2346;&#2366;&#2312;&#2306;&#2325;&#2379; &#2348;&#2330;&#2381;&#2330;&#2366;&#2354;&#2366;&#2312; &#2328;&#2352;&#2350;&#2366; &#2360;&#2367;&#2325;&#2366;&#2313;&#2344;&#2375; &#2332;&#2367;&#2350;&#2381;&#2350;&#2366; &#2309;&#2348; MiDas eCLASS &#2325;&#2379;</div>
+                            <div class="offer-date-time ng-binding">14 Dec 2018</div>
+                        </div>
+                    </div>
+                </a>
+            </li><!-- end ngRepeat: offer in offerList --><li ng-repeat="offer in offerList" class="ng-scope">
+                <a ui-sref="offerDetails({'product_name': offer.productCode })" href="#/offer_details/nea_offers">
+                    <div class="offer-container">
+                                        <span class="icon-offer">
+                                            <img ng-src="https://cdn.esewa.com.np//ui/images/logos/merchants/0nepd4KFG03D6b73m8qjnea_online.png" src="laxmi%20bank_files/0nepd4KFG03D6b73m8qjnea_online.png">
+                                        </span>
+                        <div class="offer-d">
+                            <strong class="ng-binding">&#2348;&#2367;&#2332;&#2369;&#2354;&#2368;&#2325;&#2379; &#2348;&#2367;&#2354; &#2349;&#2369;&#2325;&#2381;&#2340;&#2366;&#2344;&#2368;&#2350;&#2366; &#2309;&#2347;&#2352;</strong>
+                            <div class="offer-descp ng-binding">&#2348;&#2367;&#2332;&#2369;&#2354;&#2368;&#2325;&#2379; &#2348;&#2367; &#2354; uyhfguygfuyfuytf&#2349;&#2369;&#2325;&#2381;&#2340;&#2366;&#2344;&#2368;&#2350;&#2366; &#2309;&#2347;&#2352;</div>
+                            <div class="offer-date-time ng-binding">12 Dec, 2018</div>
+                        </div>
+                    </div>
+                </a>
+            </li><!-- end ngRepeat: offer in offerList --><li ng-repeat="offer in offerList" class="ng-scope">
+                <a ui-sref="offerDetails({'product_name': offer.productCode })" href="#/offer_details/classic_tech_offer">
+                    <div class="offer-container">
+                                        <span class="icon-offer">
+                                            <img ng-src="https://cdn.esewa.com.np//ui/images/logos/merchants/7P2XRSaWF6pZKScgwQXZLogo.jpg" src="laxmi%20bank_files/7P2XRSaWF6pZKScgwQXZLogo.jpg">
+                                        </span>
+                        <div class="offer-d">
+                            <strong class="ng-binding">Classic Tech cashback offer</strong>
+                            <div class="offer-descp ng-binding">Get 2% Cashback instantly on Classic tech Payment</div>
+                            <div class="offer-date-time ng-binding">11 Dec, 2018</div>
+                        </div>
+                    </div>
+                </a>
+            </li><!-- end ngRepeat: offer in offerList --><li ng-repeat="offer in offerList" class="ng-scope">
+                <a ui-sref="offerDetails({'product_name': offer.productCode })" href="#/offer_details/isp_cashback_offer">
+                    <div class="offer-container">
+                                        <span class="icon-offer">
+                                            <img ng-src="https://cdn.esewa.com.np//ui/html/offers/User%20Offer/icon/Internet.PNG" src="laxmi%20bank_files/Internet.PNG">
+                                        </span>
+                        <div class="offer-d">
+                            <strong class="ng-binding">Cashback in ISP payment</strong>
+                            <div class="offer-descp ng-binding">Get 1% Cashback in ISP payment</div>
+                            <div class="offer-date-time ng-binding">10 Dec, 2018</div>
+                        </div>
+                    </div>
+                </a>
+            </li><!-- end ngRepeat: offer in offerList -->
+        </div>
+        <div class="offer-view-more-block">
+            <a ui-sref="offers" href="#/offers">
+                <div class="offer-container text-center">
+                    <div class="offer-d view-more">
+                        <strong>View More</strong>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </ul>
+</div>
+<script class="ng-scope">var scope=angular.element(document.getElementsByClassName('offer-dropdown')).scope();scope.showloadingBar=true;scope.offerList=[];var localNgStorage=JSON.parse(window.localStorage['ngStorage-user']||"{}");var isUser=!Object.keys(localNgStorage).length;var offerDropdownLink="https://cdn.esewa.com.np/ui/data/"+(isUser?"userOffersList.json":"orgOffersList.json");$.get(offerDropdownLink,function(data){scope.offerList=data;scope.showloadingBar=false;if(!scope.$$phase){scope.$apply();}}).fail(function(error){scope.showloadingBar=false;});</script>
+
+<style class="ng-scope">.offer-listing li{cursor:text!important}.dropdown-offer .offer-drop-menu{width:460px;left:-180px}.dropdown-offer .offer-drop-menu a{color:#454545;padding:0!important}.dropdown-offer .offer-drop-menu a:hover .offer-container{background-color:#f5f5f5;color:#000}.offer-drop-menu{padding:0}.offer-container{padding:12px;position:relative}.offer-container p{margin:0}.offer-d{display:inline-block;padding-left:52px}.offer-d .offer-descp{width:380px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.offer-block{height:245px;overflow:hidden;overflow-y:scroll}.icon-offer{line-height:0;top:12px;position:absolute;background:#e9e9e9;border-radius:100px;padding:0;height:40px;width:40px}.icon-offer img{object-fit:cover;width:40px;height:40px;border-radius:50%}.view-more{text-align:center;padding:0}.offer-drop-menu .offer-view-more-block{border-top:1px solid #e9e9e9}.offer-date-time{font-size:12px;color:#ccc}.ic-offer-d{padding-right:4px}.dropdown-offer .btn:focus{box-shadow:none!important;border-color:#41a124!important}.dropdown-offer .btn{width:100px;height:34px;border-radius:2px;border:2px solid #41a124!important;background-color:transparent}.dropdown-offer .btn:hover{background-color:#41a124;transition:background-color .5s ease}.offer-tb{border-color:transparent;border-bottom-color:transparent;border-style:dashed dashed solid;border-width:0 8.5px 8.5px;position:absolute;left:50%;z-index:1;height:0;width:0;-moz-animation:gb__a .2s;animation:gb__a .2s;border-bottom-color:#ccc;border-bottom-color:rgba(0,0,0,.2);top:-8px}.offer-sb{border-color:transparent;border-bottom-color:transparent;border-bottom-color:#fff;border-style:dashed dashed solid;border-width:0 8.5px 8.5px;position:absolute;left:50%;top:-8px;z-index:10000;height:0;width:0;-moz-animation:gb__a .2s;animation:gb__a .2s}.icon-offer .ic-gift{padding:11px}</style>
+
+
+
+</ng-include>
+
+</ng-include>
+                <!-- ngIf: !isLoggedIn() -->
+                <div class="nav navbar-nav profile-details pn" ng-hide="!isLoggedIn()">
+                    <!-- ngInclude: '/user/home/views/customer_profile_details.html' --><div ng-include="'/user/home/views/customer_profile_details.html'" class="ng-scope"><ul class="nav navbar-nav navbar-right profile-details-section ng-scope"> <li class="account-cash hidden-xs ng-scope" ng-controller="BalanceRewardCtrl">NPR. <b class="ng-binding">437.20</b> </li> <li ng-controller="WebSocketController" class="ng-scope"></li> <li class="dropdown"> <a data-target="#additionalSelection" class="dropdown-toggle icon-pic" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="margin-right: 0px"> <img src="laxmi%20bank_files/e527747f-17d2-4e9a-ac18-4672eafb64c9" class="img-circle top-user-profile special-img" id="ACCOUNT_ICON" alt="" title="ANKIT KUMAR KARNA"> </a> <ul class="dropdown-menu"> <li class="dropdown-header" ng-show="$storage.profile.username"><h5 class="ng-binding">ANKIT KUMAR KARNA <img ng-show="$storage.profile.isVerified" class="user-verified" src="laxmi%20bank_files/active_user.png" title="Verified"></h5></li> <li><a ng-click="goToState(StateConstant.KYC_DETAIL)">Profile</a></li> <li><a ng-click="goToState(StateConstant.STATEMENTS)">Statements</a></li> <li><a>Reward Points: <span class="badge ng-binding">757</span></a></li> <li><a ng-click="goToState(StateConstant.ACTIVITIES)" class="ng-binding">Last Login: less than a minute ago </a></li> <li role="separator" class="divider"></li> <li> <form action="/logout" id="logoutForm" method="POST" class="logout-form ng-pristine ng-valid"> <input type="hidden" name="uuid" ng-value="userAuth.uuid" autocomplete="off"> <button type="button" ng-click="signOut()" class="logout-button">Logout </button> </form> </li> </ul> </li> </ul></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- container close -->
+</div>
+</ng-include> </div> <!-- nav container-fluid close --> <!-- *************************************************************** --> <div class="row"> <div class="container-fliud nav-sub-bg push-down tp0"> <div class="container tab-container"> <!-- ngInclude: 'common/navigation.html' --><div class="row ng-scope" ng-include="'common/navigation.html'" ng-show="isLoggedIn()">
+<ul class="nav nav-pills static-menus ng-scope">
+    <li role="presentation"><a ng-click="goToState(StateConstant.STATEMENTS)">Statements</a></li>
+
+    <li role="presentation"><a ng-click="goToState(StateConstant.MAKE_PAYMENT, {'product_code':'TOPUP', 'product_name':'Top Up'})">Top Up</a></li>
+
+    <li role="presentation"><a ng-click="goToState(StateConstant.AIRLINES_SEARCH)">Airlines</a>
+    </li>
+
+    <li role="presentation"><a ng-click="goToState('serviceList')">Internet Bill</a>
+
+    </li><li role="presentation"><a ng-click="goToState(StateConstant.BANK_WITHDRAW)">Bank Transfer</a>
+    </li>
+
+    <li role="presentation"><a ng-click="goToState(StateConstant.MAKE_PAYMENT,{'product_code': 'BALTXN', 'product_name': 'Fund Transfer'})">Send Money</a></li>
+
+    <li role="presentation"><a target="_blank" rel="noreferrer" href="https://blog.esewa.com.np/banks">Load Fund</a>
+    </li>
+
+    <li role="presentation"><a ng-click="goToState(StateConstant.WESTERN_UNION)">Western Union</a>
+    </li>
+
+
+</ul></div> <!-- ngInclude: '../commons/static/views/static_menus.html' --><div class="row static-menus ng-scope ng-hide" ng-include="'../commons/static/views/static_menus.html'" ng-controller="StaticController" ng-show="!isLoggedIn()"><!--<ul class="nav nav-pills nav-sub-bg static-menus pn">
+    <li role="presentation" ng-repeat="staticMenu in staticMenus">
+        <a href="" ng-click="setShowStaticContent(staticMenu.url)">{{staticMenu.name}}</a>
+    </li>
+</ul>--> <ul class="nav nav-pills static-menus ng-scope"> <li role="presentation"><a href="#" ng-click="goToState(StateConstant.MAKE_PAYMENT, {'product_code':'TOPUP', 'product_name':'Top Up'})">Top Up</a></li> <li role="presentation"><a href="#">Internet Bill</a> </li> <li role="presentation"><a href="#" ng-click="goToState(StateConstant.AIRLINES_SEARCH)">Airlines</a> </li> <li role="presentation"><a href="https://blog.esewa.com.np/banks">Load Fund</a> </li> <!-- <li role="presentation"><a href="" ng-click="getDetails('BALTXN','Fund Transfer','' )"
+                               ng-controller="PaymentMenuController">Fund Transfer</a></li>--> </ul></div> </div> </div> </div> <!-- *************************************************************** --> <!-- ngIf: showApplicationProcessing --> <div class="row"> <div class="container tab-container"> <div class="affix-row push-down"> <!-- uiView: --><div ui-view="" style="padding: 0px !important" class="ng-scope"><!-- uiView: --><div ui-view="" class="ng-scope"><!-- ngInclude: --><ng-include src="'html/templates/statements.html' | cdn" class="ng-scope"><div class="col-lg-12 pn mb10 ng-scope">
+    <div class="affix-row statement-page">
+        <div class="col-lg-12 col-md-12 col-sm-12 pn mobile-container">
+            <div class="col-md-12 pn">
+                <div class="payment-box panel-custom">
+                    <h4 class="stmt-title">Statements</h4>
+                    <a ng-click="getExcel()" class="download-excel btn btn-sm btn-default" style="float: right">
+                        <img src="laxmi%20bank_files/icon_xls.png" alt="excel" class="icon-excel">
+                        Download Excel
+                    </a>
+
+                    <!-- ngIf: statementMessage --><div ng-if="statementMessage" class="ng-scope">
+                        <div class="alert-success alert alert-dismissible stmt-alert" role="alert">
+                            <div ng-bind-html="trustedHtmlMessage" class="ng-binding">Please select date earlier from 13 October 2017 for older statement or later from 13 October 2017 for new statement</div>
+                        </div>
+
+                    </div><!-- end ngIf: statementMessage -->
+
+                    <form class="row form-inline mb-15 ng-pristine ng-valid ng-valid-required ng-valid-date">
+                        <div class="stmt-search-container">
+                            <!-- ngInclude: --><ng-include src="'https://cdn.esewa.com.np/ui/html/templates/date_range.html'" ng-controller="DateRangeController" class="ng-scope"><ng-form name="dateRangeForm" class="form-inline push-down ng-pristine ng-valid ng-scope ng-valid-required ng-valid-date" role="form" novalidate="">
+    <div class="form-group" style="padding-left: 15px;">
+        <div class="input-group">
+            <div class="input-group-addon form-addon-text">From</div>
+            <input name="fromTxnDate" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty ng-valid-required ng-valid-date" datepicker-popup="mediumDate" ng-model="dateRange.fromDate" init-date="today" ng-change="verifyDate()" min-date="2009-09-09" max-date="today" show-weeks="false" is-open="$parent.fromDateOpened" ng-required="true" ng-click="openFromDate($event)" close-text="Close" required="required" value="Jan 11, 2019"><!-- ngIf: isOpen -->
+            
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-addon form-addon-text">To</div>
+            <input name="toTxnDate" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty ng-valid-required ng-valid-date" datepicker-popup="mediumDate" ng-model="dateRange.toDate" init-date="todayTxnDate" min-date="dateRange.fromDate" max-date="maxToDate" show-weeks="false" ng-change="verifyDate()" is-open="$parent.toDateOpened" ng-required="true" ng-click="openToDate($event)" close-text="Close" required="required" value="Jan 16, 2019"><!-- ngIf: isOpen -->
+            
+        </div>
+    </div>
+</ng-form>
+</ng-include>
+                            <div class="form-group">
+                                <select class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="params.channel" ng-options="channel.value as channel.name for channel in channelList"><option value="" class="" selected="selected">-Channel-</option><option label="WEB" value="string:WEB_USER">WEB</option><option label="SMS" value="string:MSEWA">SMS</option><option label="GPRS" value="string:GPRS">GPRS</option></select>
+                            </div>
+                            <div class="form-group">
+                                <div ng-class="classSelectMainDiv" ec-type="status" ec-options="statusList" ec-class-select-div="col-half second-row-tab select-status" ec-model-select="params.status" class="ng-isolate-scope form-group"><div ng-class="classSelectDiv" class="col-half second-row-tab select-status"><select class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="params.status" ng-change="ecChange()" ng-options="statusList"><option value="" class="ng-binding" selected="selected">Status</option><option label="PENDING" value="string:PENDING">PENDING</option><option label="COMPLETE" value="string:COMPLETE">COMPLETE</option><option label="CANCELED" value="string:CANCELED">CANCELED</option><option label="TIMEOUT" value="string:TIMEOUT">TIMEOUT</option></select><p class="esError ng-binding ng-hide" ng-show="errorMessage"></p></div></div>
+                            </div>
+                            <div class="form-group">
+                                <div ng-class="classSelectMainDiv" ec-type="txntype" ec-options="TxnTypeList" ec-class-select-div="col-half second-row-tab" ec-model-select="params.txnType" class="ng-isolate-scope form-group"><div ng-class="classSelectDiv" class="col-half second-row-tab"><select class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="params.txnType" ng-change="ecChange()" ng-options="TxnTypeList"><option value="" class="ng-binding" selected="selected">Dr/Cr</option><option label="DR" value="string:DR">DR</option><option label="CR" value="string:CR">CR</option></select><p class="esError ng-binding ng-hide" ng-show="errorMessage"></p></div></div>
+                            </div>
+                            <div class="form-group" data-toggle="toogle" title="Search transactions by mobile number, landline number, CAS ID and so on.">
+                                <input type="search" class="form-control stmt-search ng-pristine ng-untouched ng-valid ng-empty" ng-model="params.prop_value" placeholder="Search">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success second-row-tab btn-raised" style="padding: 8px 19px!important" ng-click="reloadTable()"><i class="fa fa-search"></i>
+                                </button>
+                                <button type="button" class="btn btn-default second-row-tab btn-raised" style="margin-left: 0;padding: 8px 19px!important" ng-click="resetTable()">
+                                    <i class="fa fa-refresh"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <hr style="border-top: 1px solid #ccc;margin: 0px !important;">
+
+                    <div class="panel-body" style="padding: 0px !important;">
+                        <table infinite-scroll="userStatements.nextPage()" infinite-scroll-disabled="userStatements.busy || userStatements.complete" class="statement_table table table-responsive ng-isolate-scope" ng-show="userStatements.statements">
+                            <thead ng-show="userStatements.statements.length &gt; 0" class="">
+                            <tr><th>S.N.</th>
+                            <th class="fix-date">DATE</th>
+                            <th>DESCRIPTION</th>
+                            <th>DR.</th>
+                            <th>CR.</th>
+                            <th>BALANCE</th>
+                            <th>CHANNEL</th>
+                            <th>STATUS</th>
+                            </tr></thead>
+                            <tbody>
+                            <!-- ngRepeat: transaction in userStatements.statements --><tr ng-repeat="transaction in userStatements.statements" style="cursor: pointer; " class="statement-table-tr ng-scope" ng-click="showStatement(transaction)" ng-class="getClassByStatus(transaction.status)" ng-mouseover="transaction.showRePayOption=true" ng-mouseleave="transaction.showRePayOption=false">
+                                <td style="width:5%" class="ng-binding">
+                                    1
+                                </td>
+                                <td style="width:20%" class="fix-date ng-binding">
+                                    Jan 16, 2019 4:29:31 PM
+                                </td>
+                                <td style="width:35%">
+                                    <div class="col-md-2" style=" background-color: #ffffff;display: inline-flex; border-radius: 100%;
+                    border: 1px solid #ddd;height: 34px;padding: 0px;width: 34px;vertical-align: middle;">
+                                        <!-- ngIf: transaction.product_logo_path --><img ng-if="transaction.product_logo_path" style="width: 24px; height: 24px;margin: auto; border-radius: 50%;" src="laxmi%20bank_files/laxmi_logo.png" class="ng-scope"><!-- end ngIf: transaction.product_logo_path -->
+                                        <!-- ngIf: !transaction.product_logo_path -->
+                                    </div>
+                                    <div class="es-statement-descp col-md-10 ng-binding" style="display: inline-block">
+                                        Bank transfer charges
+                                    </div>
+                                </td>
+
+                                <td ng-show="transaction.debit" style="width:5%"><span ng-show="transaction.debit" class="ng-binding">20</span>
+                                </td>
+                                <td ng-show="transaction.debit" style="width:5%"><span> - </span></td>
+                                <td ng-show="!transaction.debit" style="width:5%" class="ng-hide"><span> - </span></td>
+                                <td ng-show="!transaction.debit" style="width:5%" class="ng-hide"><span ng-show="!transaction.debit" class="ng-binding ng-hide">20</span>
+                                </td>
+                                <td style="width:10%" class="ng-binding">
+                                    437.2
+                                </td>
+                                <td style="width:5%" class="ng-binding">
+                                    WEB
+                                </td>
+                                <td style="width:10%">
+                                    <a ng-show="transaction.status === 'COMPLETE' ">
+                                        <img src="laxmi%20bank_files/active_user.png" title="Complete"></a>
+
+                                    <a ng-show="transaction.status === 'PENDING' " class="ng-hide">
+                                        <img src="laxmi%20bank_files/orange_error.png" title="Pending"></a>
+
+                                    <a ng-show="transaction.status === 'CANCELED' " class="ng-hide">
+                                        <img src="laxmi%20bank_files/red_cancel.png" title="Cancelled"></a>
+
+                                    <a ng-show="transaction.status === 'TIMEOUT' " class="ng-hide">
+                                        <img src="laxmi%20bank_files/red_cancel.png" title="Time out"></a>
+
+                                    <a ng-show="transaction.status === 'AMBIGUOUS' " class="ng-hide">
+                                        <span class="glyphicon glyphicon-question-sign" style="color:orange;font-size: 17px" aria-hidden="true"></span></a>
+                                    <!-- <a ng-show="transaction.showRePayOption && transaction.redo_payment"
+                                       aria-haspopup="true"
+                                       data-tooltip
+                                       data-tip="Redo payment for {{transaction.service_name}}"
+                                       ng-mouseover="transaction.isHoverOverRedoPayment=true"
+                                       ng-mouseleave="transaction.isHoverOverRedoPayment=false">
+                                        <span class="fa fa-repeat"
+                                              style="color:#000000; vertical-align: middle; padding: 0 25px;
+                                              font-size: 17px"
+                                              aria-hidden="true">
+                                        </span>
+                                    </a> -->
+                                </td>
+                            </tr><!-- end ngRepeat: transaction in userStatements.statements --><tr ng-repeat="transaction in userStatements.statements" style="cursor: pointer; " class="statement-table-tr ng-scope" ng-click="showStatement(transaction)" ng-class="getClassByStatus(transaction.status)" ng-mouseover="transaction.showRePayOption=true" ng-mouseleave="transaction.showRePayOption=false">
+                                <td style="width:5%" class="ng-binding">
+                                    2
+                                </td>
+                                <td style="width:20%" class="fix-date ng-binding">
+                                    Jan 16, 2019 4:29:29 PM
+                                </td>
+                                <td style="width:35%">
+                                    <div class="col-md-2" style=" background-color: #ffffff;display: inline-flex; border-radius: 100%;
+                    border: 1px solid #ddd;height: 34px;padding: 0px;width: 34px;vertical-align: middle;">
+                                        <!-- ngIf: transaction.product_logo_path --><img ng-if="transaction.product_logo_path" style="width: 24px; height: 24px;margin: auto; border-radius: 50%;" src="laxmi%20bank_files/laxmi_logo.png" class="ng-scope"><!-- end ngIf: transaction.product_logo_path -->
+                                        <!-- ngIf: !transaction.product_logo_path -->
+                                    </div>
+                                    <div class="es-statement-descp col-md-10 ng-binding" style="display: inline-block">
+                                        Money transferred to LAXMI BANK LTD.
+                                    </div>
+                                </td>
+
+                                <td ng-show="transaction.debit" style="width:5%"><span ng-show="transaction.debit" class="ng-binding">2712</span>
+                                </td>
+                                <td ng-show="transaction.debit" style="width:5%"><span> - </span></td>
+                                <td ng-show="!transaction.debit" style="width:5%" class="ng-hide"><span> - </span></td>
+                                <td ng-show="!transaction.debit" style="width:5%" class="ng-hide"><span ng-show="!transaction.debit" class="ng-binding ng-hide">2712</span>
+                                </td>
+                                <td style="width:10%" class="ng-binding">
+                                    457.2
+                                </td>
+                                <td style="width:5%" class="ng-binding">
+                                    WEB
+                                </td>
+                                <td style="width:10%">
+                                    <a ng-show="transaction.status === 'COMPLETE' ">
+                                        <img src="laxmi%20bank_files/active_user.png" title="Complete"></a>
+
+                                    <a ng-show="transaction.status === 'PENDING' " class="ng-hide">
+                                        <img src="laxmi%20bank_files/orange_error.png" title="Pending"></a>
+
+                                    <a ng-show="transaction.status === 'CANCELED' " class="ng-hide">
+                                        <img src="laxmi%20bank_files/red_cancel.png" title="Cancelled"></a>
+
+                                    <a ng-show="transaction.status === 'TIMEOUT' " class="ng-hide">
+                                        <img src="laxmi%20bank_files/red_cancel.png" title="Time out"></a>
+
+                                    <a ng-show="transaction.status === 'AMBIGUOUS' " class="ng-hide">
+                                        <span class="glyphicon glyphicon-question-sign" style="color:orange;font-size: 17px" aria-hidden="true"></span></a>
+                                    <!-- <a ng-show="transaction.showRePayOption && transaction.redo_payment"
+                                       aria-haspopup="true"
+                                       data-tooltip
+                                       data-tip="Redo payment for {{transaction.service_name}}"
+                                       ng-mouseover="transaction.isHoverOverRedoPayment=true"
+                                       ng-mouseleave="transaction.isHoverOverRedoPayment=false">
+                                        <span class="fa fa-repeat"
+                                              style="color:#000000; vertical-align: middle; padding: 0 25px;
+                                              font-size: 17px"
+                                              aria-hidden="true">
+                                        </span>
+                                    </a> -->
+                                </td>
+                            </tr><!-- end ngRepeat: transaction in userStatements.statements --><tr ng-repeat="transaction in userStatements.statements" style="cursor: pointer; " class="statement-table-tr ng-scope" ng-click="showStatement(transaction)" ng-class="getClassByStatus(transaction.status)" ng-mouseover="transaction.showRePayOption=true" ng-mouseleave="transaction.showRePayOption=false">
+                                <td style="width:5%" class="ng-binding">
+                                    3
+                                </td>
+                                <td style="width:20%" class="fix-date ng-binding">
+                                    Jan 16, 2019 3:46:35 PM
+                                </td>
+                                <td style="width:35%">
+                                    <div class="col-md-2" style=" background-color: #ffffff;display: inline-flex; border-radius: 100%;
+                    border: 1px solid #ddd;height: 34px;padding: 0px;width: 34px;vertical-align: middle;">
+                                        <!-- ngIf: transaction.product_logo_path --><img ng-if="transaction.product_logo_path" style="width: 24px; height: 24px;margin: auto; border-radius: 50%;" src="laxmi%20bank_files/global_logo.png" class="ng-scope"><!-- end ngIf: transaction.product_logo_path -->
+                                        <!-- ngIf: !transaction.product_logo_path -->
+                                    </div>
+                                    <div class="es-statement-descp col-md-10 ng-binding" style="display: inline-block">
+                                        Money transferred from GLOBAL IME BANK LTD.
+                                    </div>
+                                </td>
+
+                                <td ng-show="transaction.debit" style="width:5%" class="ng-hide"><span ng-show="transaction.debit" class="ng-binding ng-hide">3000</span>
+                                </td>
+                                <td ng-show="transaction.debit" style="width:5%" class="ng-hide"><span> - </span></td>
+                                <td ng-show="!transaction.debit" style="width:5%"><span> - </span></td>
+                                <td ng-show="!transaction.debit" style="width:5%"><span ng-show="!transaction.debit" class="ng-binding">3000</span>
+                                </td>
+                                <td style="width:10%" class="ng-binding">
+                                    3169.2
+                                </td>
+                                <td style="width:5%" class="ng-binding">
+                                    THIRDPARTY
+                                </td>
+                                <td style="width:10%">
+                                    <a ng-show="transaction.status === 'COMPLETE' ">
+                                        <img src="laxmi%20bank_files/active_user.png" title="Complete"></a>
+
+                                    <a ng-show="transaction.status === 'PENDING' " class="ng-hide">
+                                        <img src="laxmi%20bank_files/orange_error.png" title="Pending"></a>
+
+                                    <a ng-show="transaction.status === 'CANCELED' " class="ng-hide">
+                                        <img src="laxmi%20bank_files/red_cancel.png" title="Cancelled"></a>
+
+                                    <a ng-show="transaction.status === 'TIMEOUT' " class="ng-hide">
+                                        <img src="laxmi%20bank_files/red_cancel.png" title="Time out"></a>
+
+                                    <a ng-show="transaction.status === 'AMBIGUOUS' " class="ng-hide">
+                                        <span class="glyphicon glyphicon-question-sign" style="color:orange;font-size: 17px" aria-hidden="true"></span></a>
+                                    <!-- <a ng-show="transaction.showRePayOption && transaction.redo_payment"
+                                       aria-haspopup="true"
+                                       data-tooltip
+                                       data-tip="Redo payment for {{transaction.service_name}}"
+                                       ng-mouseover="transaction.isHoverOverRedoPayment=true"
+                                       ng-mouseleave="transaction.isHoverOverRedoPayment=false">
+                                        <span class="fa fa-repeat"
+                                              style="color:#000000; vertical-align: middle; padding: 0 25px;
+                                              font-size: 17px"
+                                              aria-hidden="true">
+                                        </span>
+                                    </a> -->
+                                </td>
+                            </tr><!-- end ngRepeat: transaction in userStatements.statements --><tr ng-repeat="transaction in userStatements.statements" style="cursor: pointer; " class="statement-table-tr ng-scope" ng-click="showStatement(transaction)" ng-class="getClassByStatus(transaction.status)" ng-mouseover="transaction.showRePayOption=true" ng-mouseleave="transaction.showRePayOption=false">
+                                <td style="width:5%" class="ng-binding">
+                                    4
+                                </td>
+                                <td style="width:20%" class="fix-date ng-binding">
+                                    Jan 12, 2019 7:30:29 PM
+                                </td>
+                                <td style="width:35%">
+                                    <div class="col-md-2" style=" background-color: #ffffff;display: inline-flex; border-radius: 100%;
+                    border: 1px solid #ddd;height: 34px;padding: 0px;width: 34px;vertical-align: middle;">
+                                        <!-- ngIf: transaction.product_logo_path --><img ng-if="transaction.product_logo_path" style="width: 24px; height: 24px;margin: auto; border-radius: 50%;" src="laxmi%20bank_files/ncell-2.png" class="ng-scope"><!-- end ngIf: transaction.product_logo_path -->
+                                        <!-- ngIf: !transaction.product_logo_path -->
+                                    </div>
+                                    <div class="es-statement-descp col-md-10 ng-binding" style="display: inline-block">
+                                        Cashback on Ncell topup to 9805311953
+                                    </div>
+                                </td>
+
+                                <td ng-show="transaction.debit" style="width:5%" class="ng-hide"><span ng-show="transaction.debit" class="ng-binding ng-hide">2</span>
+                                </td>
+                                <td ng-show="transaction.debit" style="width:5%" class="ng-hide"><span> - </span></td>
+                                <td ng-show="!transaction.debit" style="width:5%"><span> - </span></td>
+                                <td ng-show="!transaction.debit" style="width:5%"><span ng-show="!transaction.debit" class="ng-binding">2</span>
+                                </td>
+                                <td style="width:10%" class="ng-binding">
+                                    169.2
+                                </td>
+                                <td style="width:5%" class="ng-binding">
+                                    GPRS
+                                </td>
+                                <td style="width:10%">
+                                    <a ng-show="transaction.status === 'COMPLETE' ">
+                                        <img src="laxmi%20bank_files/active_user.png" title="Complete"></a>
+
+                                    <a ng-show="transaction.status === 'PENDING' " class="ng-hide">
+                                        <img src="laxmi%20bank_files/orange_error.png" title="Pending"></a>
+
+                                    <a ng-show="transaction.status === 'CANCELED' " class="ng-hide">
+                                        <img src="laxmi%20bank_files/red_cancel.png" title="Cancelled"></a>
+
+                                    <a ng-show="transaction.status === 'TIMEOUT' " class="ng-hide">
+                                        <img src="laxmi%20bank_files/red_cancel.png" title="Time out"></a>
+
+                                    <a ng-show="transaction.status === 'AMBIGUOUS' " class="ng-hide">
+                                        <span class="glyphicon glyphicon-question-sign" style="color:orange;font-size: 17px" aria-hidden="true"></span></a>
+                                    <!-- <a ng-show="transaction.showRePayOption && transaction.redo_payment"
+                                       aria-haspopup="true"
+                                       data-tooltip
+                                       data-tip="Redo payment for {{transaction.service_name}}"
+                                       ng-mouseover="transaction.isHoverOverRedoPayment=true"
+                                       ng-mouseleave="transaction.isHoverOverRedoPayment=false">
+                                        <span class="fa fa-repeat"
+                                              style="color:#000000; vertical-align: middle; padding: 0 25px;
+                                              font-size: 17px"
+                                              aria-hidden="true">
+                                        </span>
+                                    </a> -->
+                                </td>
+                            </tr><!-- end ngRepeat: transaction in userStatements.statements --><tr ng-repeat="transaction in userStatements.statements" style="cursor: pointer; " class="statement-table-tr ng-scope" ng-click="showStatement(transaction)" ng-class="getClassByStatus(transaction.status)" ng-mouseover="transaction.showRePayOption=true" ng-mouseleave="transaction.showRePayOption=false">
+                                <td style="width:5%" class="ng-binding">
+                                    5
+                                </td>
+                                <td style="width:20%" class="fix-date ng-binding">
+                                    Jan 12, 2019 7:30:27 PM
+                                </td>
+                                <td style="width:35%">
+                                    <div class="col-md-2" style=" background-color: #ffffff;display: inline-flex; border-radius: 100%;
+                    border: 1px solid #ddd;height: 34px;padding: 0px;width: 34px;vertical-align: middle;">
+                                        <!-- ngIf: transaction.product_logo_path --><img ng-if="transaction.product_logo_path" style="width: 24px; height: 24px;margin: auto; border-radius: 50%;" src="laxmi%20bank_files/ncell-2.png" class="ng-scope"><!-- end ngIf: transaction.product_logo_path -->
+                                        <!-- ngIf: !transaction.product_logo_path -->
+                                    </div>
+                                    <div class="es-statement-descp col-md-10 ng-binding" style="display: inline-block">
+                                        Ncell topup to 9805311953
+                                    </div>
+                                </td>
+
+                                <td ng-show="transaction.debit" style="width:5%"><span ng-show="transaction.debit" class="ng-binding">100</span>
+                                </td>
+                                <td ng-show="transaction.debit" style="width:5%"><span> - </span></td>
+                                <td ng-show="!transaction.debit" style="width:5%" class="ng-hide"><span> - </span></td>
+                                <td ng-show="!transaction.debit" style="width:5%" class="ng-hide"><span ng-show="!transaction.debit" class="ng-binding ng-hide">100</span>
+                                </td>
+                                <td style="width:10%" class="ng-binding">
+                                    167.2
+                                </td>
+                                <td style="width:5%" class="ng-binding">
+                                    GPRS
+                                </td>
+                                <td style="width:10%">
+                                    <a ng-show="transaction.status === 'COMPLETE' ">
+                                        <img src="laxmi%20bank_files/active_user.png" title="Complete"></a>
+
+                                    <a ng-show="transaction.status === 'PENDING' " class="ng-hide">
+                                        <img src="laxmi%20bank_files/orange_error.png" title="Pending"></a>
+
+                                    <a ng-show="transaction.status === 'CANCELED' " class="ng-hide">
+                                        <img src="laxmi%20bank_files/red_cancel.png" title="Cancelled"></a>
+
+                                    <a ng-show="transaction.status === 'TIMEOUT' " class="ng-hide">
+                                        <img src="laxmi%20bank_files/red_cancel.png" title="Time out"></a>
+
+                                    <a ng-show="transaction.status === 'AMBIGUOUS' " class="ng-hide">
+                                        <span class="glyphicon glyphicon-question-sign" style="color:orange;font-size: 17px" aria-hidden="true"></span></a>
+                                    <!-- <a ng-show="transaction.showRePayOption && transaction.redo_payment"
+                                       aria-haspopup="true"
+                                       data-tooltip
+                                       data-tip="Redo payment for {{transaction.service_name}}"
+                                       ng-mouseover="transaction.isHoverOverRedoPayment=true"
+                                       ng-mouseleave="transaction.isHoverOverRedoPayment=false">
+                                        <span class="fa fa-repeat"
+                                              style="color:#000000; vertical-align: middle; padding: 0 25px;
+                                              font-size: 17px"
+                                              aria-hidden="true">
+                                        </span>
+                                    </a> -->
+                                </td>
+                            </tr><!-- end ngRepeat: transaction in userStatements.statements -->
+                            </tbody>
+                        </table>
+                        <div ng-show="userStatements.busy" class="text-center ng-hide">
+                            <span class="glyphicon glyphicon-refresh">Loading..........</span>
+                        </div>
+                        <div ng-show="userStatements.emptyResult" class="well well-lg top-buffer ng-hide">
+                            <div class="text text-center">No transactions available . Please try again, changing the
+                                                          search
+                                                          parameters.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</ng-include></div></div> <!-- <div class="clearfix"></div>--> </div> <!-- col-sm-10 col-md-10 --> </div> </div> <!-- ngInclude: --><ng-include src="'/common/showcase.html'" ng-show="showAddServices" class="ng-scope ng-hide"><!-- ngInclude: --><div ng-include="" src="'html/showcase.html' | cdn" class="ng-scope"><!-- ngIf: showAddServices -->
+<style class="ng-scope">.service-card{height:230px!important}</style>
+</div></ng-include> <!--<ng-include src="'https://cdn.esewa.com.np/ui/html/showcase.html'" ng-show="showAddServices"></ng-include>--> <!-- ngInclude: 'https://cdn.esewa.com.np/ui/html/esewa_footer.html' --><div ng-include="'https://cdn.esewa.com.np/ui/html/esewa_footer.html'" class="row ng-scope"><script class="ng-scope">jssor_1_slider_init=function(){var jssor_1_options={$AutoPlay:1,$Idle:0,$SlideDuration:5000,$SlideEasing:$Jease$.$Linear,$PauseOnHover:4,$SlideWidth:200,$Cols:7,$ArrowKeyNavigation:true,$ArrowNavigatorOptions:{$Class:$JssorArrowNavigator$,$ChanceToShow:2}};var jssor_1_slider=new $JssorSlider$("jssor_1",jssor_1_options);function ScaleSlider(){var refSize=jssor_1_slider.$Elmt.parentNode.clientWidth;if(refSize){refSize=Math.min(refSize,1140);jssor_1_slider.$ScaleWidth(refSize);}else{window.setTimeout(ScaleSlider,30);}}ScaleSlider();$Jssor$.$AddEvent(window,"load",ScaleSlider);$Jssor$.$AddEvent(window,"resize",ScaleSlider);$Jssor$.$AddEvent(window,"orientationchange",ScaleSlider);};</script>
+
+<div class="footer-wrapper row mn ng-scope">
+
+    <div class="container">
+        <div class="row partners ng-hide" ng-show="$state.current.name === 'organization.home' || $state.current.name === 'home' || $state.current.name === 'login' || $state.current.name === 'main.landing' || $state.current.name === 'main'">
+            <div class="partner-title"><h4>Partner Banks</h4></div>
+            <div>
+                <div id="jssor_1" style="position: relative; margin: 0px auto; top: 0px; left: 0px; width: 1140px; height: 200px; overflow: hidden; visibility: visible;" data-jssor-slider="1">
+                    <!-- Loading Screen -->
+                    
+                    
+                <div style="position: absolute; top: 0px; left: 0px; width: 1140px; height: 200px; transform-origin: 0px 0px 0px; transform: scale(1);"><div class="" style="position: relative; margin: 0px auto; top: 0px; left: 0px; width: 1140px; height: 200px; overflow: visible; visibility: visible; display: block;"><div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; display: none;"></div><div data-u="slides" class="slides" style="cursor: default; position: absolute; top: 0px; left: 0px; width: 1140px; height: 200px; overflow: hidden; z-index: 0;"><div style="top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; z-index: 0; pointer-events: none; transform: translate3d(-200px, 0px, 0px);"></div></div><div data-u="slides" class="slides" style="cursor: default; position: absolute; top: 0px; left: 0px; width: 1140px; height: 200px; overflow: hidden; z-index: 0;"><div style="top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; background-color: rgb(0, 0, 0); opacity: 0; z-index: 0;"></div>
+                        <!--<div>
+                            <a href="http://ace.com.np" target="_blank" rel="noreferrer">
+                                <img data-u="image"
+                                     src="https://cdn.esewa.com.np/ui/logos/bank_logos/ACE.png">
+                            </a>
+                        </div>-->
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+
+                            <a href="http://wwww.civilbank.com.np/" target="_blank" rel="noreferrer" style="display: block; top: 0px; left: 0px; width: 200px; height: 200px; position: relative; z-index: 1;">
+                                <img data-u="image" src="laxmi%20bank_files/xcivil.png" style="top: 0px; left: 0px; width: 200px; height: 200px; z-index: 1; position: absolute;" border="0">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+						
+						 <a href="https://www.centurybank.com.np/" target="_blank" rel="noreferrer" style="display: block; top: 0px; left: 0px; width: 200px; height: 200px; position: relative; z-index: 1;">
+                                <img data-u="image" src="laxmi%20bank_files/xcentury_bank.png" style="top: 0px; left: 0px; width: 200px; height: 200px; z-index: 1; position: absolute;" border="0">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+						<div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+                            <a href="https://play.google.com/store/apps/details?id=com.f1soft.banksmart.bhargav&amp;hl=en" target="_blank" rel="noreferrer" style="display: block; top: 0px; left: 0px; width: 200px; height: 200px; position: relative; z-index: 1;">
+                                <img data-u="image" src="laxmi%20bank_files/xbharghav.jpg" style="top: 0px; left: 0px; width: 200px; height: 200px; z-index: 1; position: absolute;" border="0">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+						 <a href="https://play.google.com/store/apps/details?id=com.f1soft.banksmart.skdbl" target="_blank" rel="noreferrer" style="display: block; top: 0px; left: 0px; width: 200px; height: 200px; position: relative; z-index: 1;">
+                                <img data-u="image" src="laxmi%20bank_files/xsaptakoshi.jpg" style="top: 0px; left: 0px; width: 200px; height: 200px; z-index: 1; position: absolute;" border="0">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+						 <a href="https://play.google.com/store/apps/details?id=com.hamrotech.icfc" target="_blank" rel="noreferrer" style="display: block; top: 0px; left: 0px; width: 200px; height: 200px; position: relative; z-index: 1;">
+                                <img data-u="image" src="laxmi%20bank_files/xicfc.jpg" style="top: 0px; left: 0px; width: 200px; height: 200px; z-index: 1; position: absolute;" border="0">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+
+                            <a href="http://www.bok.com.np/" target="_blank" rel="noreferrer" style="display: block; top: 0px; left: 0px; width: 200px; height: 200px; position: relative; z-index: 1;">
+                                <img data-u="image" src="laxmi%20bank_files/xbok.png" style="top: 0px; left: 0px; width: 200px; height: 200px; z-index: 1; position: absolute;" border="0">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+                            <a href="http://www.citizensbank.com.np/" target="_blank" rel="noreferrer" style="z-index: 1;">
+                                <img src="laxmi%20bank_files/xcitizen.png" style="z-index: 1;">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+                            <a href="http://www.everestbankltd.com/" target="_blank" rel="noreferrer" style="z-index: 1;">
+                                <img src="laxmi%20bank_files/xeverest.png" style="z-index: 1;">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+
+                            <a href="http://www.edb.com.np/" target="_blank" rel="noreferrer" style="display: block; top: 0px; left: 0px; width: 200px; height: 200px; position: relative; z-index: 1;">
+                                <img data-u="image" src="laxmi%20bank_files/xexcel_development.png" style="top: 0px; left: 0px; width: 200px; height: 200px; z-index: 1; position: absolute;" border="0">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+                            <a href="http://www.gandakibank.com/web/index.php/additional-services/mobile-banking" target="_blank" rel="noreferrer" style="z-index: 1;">
+                                <img src="laxmi%20bank_files/xgandaki_bikas.png" style="z-index: 1;">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+                            <a href="http://www.globalimebank.com/" target="_blank" rel="noreferrer" style="z-index: 1;">
+                                <img src="laxmi%20bank_files/xglobal_IME.png" style="z-index: 1;">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+                            <a href="http://www.ombank.com.np/" target="_blank" rel="noreferrer" style="z-index: 1;">
+                                <img src="laxmi%20bank_files/xom.png" style="z-index: 1;">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+
+                            <a href="http://www.garimabank.com.np/" target="_blank" rel="noreferrer" style="display: block; top: 0px; left: 0px; width: 200px; height: 200px; position: relative; z-index: 1;">
+                                <img data-u="image" src="laxmi%20bank_files/xgarima_new.png" style="top: 0px; left: 0px; width: 200px; height: 200px; z-index: 1; position: absolute;" border="0">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+
+                            <a href="https://ebanking.janatabank.com.np/ENULogin.html" target="_blank" rel="noreferrer" style="display: block; top: 0px; left: 0px; width: 200px; height: 200px; position: relative; z-index: 1;">
+                                <img data-u="image" src="laxmi%20bank_files/xjanata_bank.png" style="top: 0px; left: 0px; width: 200px; height: 200px; z-index: 1; position: absolute;" border="0">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+
+                            <a href="http://jbbl.com.np/" target="_blank" rel="noreferrer" style="display: block; top: 0px; left: 0px; width: 200px; height: 200px; position: relative; z-index: 1;">
+                                <img data-u="image" src="laxmi%20bank_files/xjyoti_bikash_bank.png" style="top: 0px; left: 0px; width: 200px; height: 200px; z-index: 1; position: absolute;" border="0">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+                            <a href="http://www.kailashbank.com/" target="_blank" rel="noreferrer" style="z-index: 1;">
+                                <img src="laxmi%20bank_files/xkailash_bikash_bank.png" style="z-index: 1;">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+                            <a href="http://www.kanchanbank.com.np/" target="_blank" rel="noreferrer" style="display: block; top: 0px; left: 0px; width: 200px; height: 200px; position: relative; z-index: 1;">
+                                <img data-u="image" src="laxmi%20bank_files/xkanchan.png" style="top: 0px; left: 0px; width: 200px; height: 200px; z-index: 1; position: absolute;" border="0">
+                            </a>
+
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+
+                            <a href="http://www.gurkhasfinance.com.np/" target="_blank" rel="noreferrer" style="display: block; top: 0px; left: 0px; width: 200px; height: 200px; position: relative; z-index: 1;">
+                                <img data-u="image" src="laxmi%20bank_files/xgurkha.png" style="top: 0px; left: 0px; width: 200px; height: 200px; z-index: 1; position: absolute;" border="0">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <!--<div>
+
+                            <a href="http://kamanabank.com.np/" target="_blank" rel="noreferrer">
+                                <img data-u="image"
+                                     src="https://cdn.esewa.com.np/ui/logos/bank_logos/kamana_bikas_bank.png">
+                            </a>
+                        </div>-->
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+
+                            <a href="http://www.kamanasewabank.com/" target="_blank" rel="noreferrer" style="display: block; top: 0px; left: 0px; width: 200px; height: 200px; position: relative; z-index: 1;">
+                                <img data-u="image" src="laxmi%20bank_files/xkamana-sewa.png" style="top: 0px; left: 0px; width: 200px; height: 200px; z-index: 1; position: absolute;" border="0">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+
+
+                            <a href="https://www.kumaribank.com/ibn/login.php" target="_blank" rel="noreferrer" style="display: block; top: 0px; left: 0px; width: 200px; height: 200px; position: relative; z-index: 1;">
+                                <img data-u="image" src="laxmi%20bank_files/xkumari_bank.png" style="top: 0px; left: 0px; width: 200px; height: 200px; z-index: 1; position: absolute;" border="0">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+                            <a href="http://laxmi.laxmibank.com/" target="_blank" rel="noreferrer" style="z-index: 1;">
+                                <img src="laxmi%20bank_files/xlaxmi_bank.png" style="z-index: 1;">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-31.2px, 0px, 0px);">
+                            <a href="http://www.machbank.com/" target="_blank" rel="noreferrer" style="z-index: 1;">
+                                <img src="laxmi%20bank_files/xmachhapuchhre-bank.png" style="z-index: 1;">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(168.8px, 0px, 0px);">
+                            <a href="http://www.megabanknepal.com/" target="_blank" rel="noreferrer" style="z-index: 1;">
+                                <img src="laxmi%20bank_files/xmegha_bank.png" style="z-index: 1;">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(368.8px, 0px, 0px);">
+                            <a href="http://www.mahalaxmibank.com/" target="_blank" rel="noreferrer" style="z-index: 1;">
+                                <img src="laxmi%20bank_files/xmahalaxmi.png" style="z-index: 1;">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(568.8px, 0px, 0px);">
+                            <a href="http://www.missionbanknepal.com.np/" target="_blank" rel="noreferrer" style="display: block; top: 0px; left: 0px; width: 200px; height: 200px; position: relative; z-index: 1;">
+                                <img data-u="image" src="laxmi%20bank_files/xmission_development.png" style="top: 0px; left: 0px; width: 200px; height: 200px; z-index: 1; position: absolute;" border="0">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(768.8px, 0px, 0px);">
+                            <a href="http://www.muktinathbank.com.np/" target="_blank" rel="noreferrer" style="z-index: 1;">
+                                <img src="laxmi%20bank_files/xmuktinath-bikas_bank.png" style="z-index: 1;">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(968.8px, 0px, 0px);">
+                            <a href="http://www.nabilbank.com/" target="_blank" rel="noreferrer" style="z-index: 1;">
+                                <img src="laxmi%20bank_files/xnabilbank.png" style="z-index: 1;">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(1168.8px, 0px, 0px);">
+                            <a href="http://nccbank.com.np/" target="_blank" rel="noreferrer" style="z-index: 1;">
+                                <img src="laxmi%20bank_files/xNCC-bank.png" style="z-index: 1;">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(1368.8px, 0px, 0px);">
+
+
+                            <a href="https://www.nicasiabank.com/" target="_blank" rel="noreferrer" style="display: block; top: 0px; left: 0px; width: 200px; height: 200px; position: relative; z-index: 1;">
+                                <img data-u="image" src="laxmi%20bank_files/xNIC_asia.png" style="top: 0px; left: 0px; width: 200px; height: 200px; z-index: 1; position: absolute;" border="0">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+                            <a href="http://nbbl.com.np/" target="_blank" rel="noreferrer" style="z-index: 1;">
+                                <img src="laxmi%20bank_files/xNB_bank.png" style="z-index: 1;">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+                            <a href="http://www.nmb.com.np/" target="_blank" rel="noreferrer" style="z-index: 1;">
+                                <img src="laxmi%20bank_files/xNMB_bank.png" style="z-index: 1;">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+
+                            <a href="http://www.prabhubank.com/" target="_blank" rel="noreferrer" style="display: block; top: 0px; left: 0px; width: 200px; height: 200px; position: relative; z-index: 1;">
+                                <img data-u="image" src="laxmi%20bank_files/xprabhu-bank.png" style="top: 0px; left: 0px; width: 200px; height: 200px; z-index: 1; position: absolute;" border="0">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+                            <a href="http://www.primebank.com.np/" target="_blank" rel="noreferrer" style="z-index: 1;">
+                                <img src="laxmi%20bank_files/xprime-bank.png" style="z-index: 1;">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+                            <a href="http://www.lumbinibikasbank.com/" target="_blank" rel="noreferrer" style="z-index: 1;">
+                                <img src="laxmi%20bank_files/xlumbini.png" style="z-index: 1;">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+                            <a href="http://www.purnimabank.com/purnima/index2.php?ID=50" style="z-index: 1;">
+                                <img src="laxmi%20bank_files/xpurnima-bikas-bank.png" style="z-index: 1;">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+                            <a href="http://www.kdblnepal.com/" style="z-index: 1;">
+                                <img src="laxmi%20bank_files/xkarnali_development_bank.png" style="z-index: 1;">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+
+                            <a href="http://www.rbb.com.np/" target="_blank" rel="noreferrer" style="display: block; top: 0px; left: 0px; width: 200px; height: 200px; position: relative; z-index: 1;">
+                                <img data-u="image" src="laxmi%20bank_files/xRBB.png" style="top: 0px; left: 0px; width: 200px; height: 200px; z-index: 1; position: absolute;" border="0">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+                            <a href="https://www.sanimabank.com/" target="_blank" rel="noreferrer" style="z-index: 1;">
+                                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKoAAABzCAIAAACHJQ4yAAALTElEQVR42u2aB1BVVxrHny3OpJsYk+xkE9dssups1sQa21pWszG2NY41CKKIgqFKkyIgPBAQxIKioihFwAAGFOwaFQWRjqIUBZQOihRF2tv94yWXw72voUST2e8/Zxjeed8p7/zO/c733Xsl/yX9H0tCS0D4SYSfRPhJhJ9E+EmEn0T4SYSfRPhJhJ9E+EmEn0T4SYSfRPhJhJ9E+EmEn0T4SYSfRPhJhJ9E+EmEn0T4SYSfRPhJhJ9E+EmEn0T4SYSfRPhJhJ9E+EmEn0T4SYSfRPhJhJ9E+EmEn0T4SYSfRPhJ3Ya/5nF9YFzMpmh/z9jADeG7rMN2rA/bjn/wEZX4CgbPNo+kO1lzPI3fWDlB8sNX+Dtx44rNMQHd+DubWmRaEbm97OP/5J4Uk/3gt17W2w8aemy4IrHrVF7dmDBmd4b0QlF1Q3O3jzh6dwY/0Adu1xpbZN2Jv7CqVBrl5xDhu3Kf5zB7o4GWRu9bWvezcEIZYGHziaUhKrX9POwjfGEG4y5NPSzhVB/NUQAvKN24Or6JZfzqvC1NbFJvdZ5Hg7xSBPj5gi2YUfaoe4ezOVPI978wLLvbrv6mlmav2CDHyN1zva2H2Ft/7h41zCdtmE+6uHzuHj3E3vZbD3P4AzRBQ3VmkF9R/Kr2WDH77sVvdqKABVBS2/hb48eCKMKPMtAz+XFTazcOt+VKCd85/Fz34C9+UGF2aIvmHrfBdpaLQpLRr8qyOCQFu2TxTum6YC80VzkDk6DNLPLXVowbaDyz2/FfKqjt+as3/npP5gs4Vln80w/c8IgrHrItld0BP12v+l3jzy27axm6dbiDQR+LvUo2stzS28J/2Ia1aI5OlM/gH+sX8uz7r5lSXnMflQl5mX81ndO9PE7nPVxxJG/96cL7j5tfMH6j2HzUYNzXna7ylbZn7v5+8VfUPMDlO9RGT2IVqQK2eaBEV1uiu0JiEdqp3irqU0sddIKulMzgPb2pPP6xDlp8fWVt9R86qBbjh0b5ZvwB8LfKWnHhTnMzcTyZuDepXFHZk1Q218eLh9dHa4x51GnWQHomdbKLoUWINzpUNIOPDWd09KA5Sq63yC4tmLXZ8H39aT00hvddPubfbvqZ99p/4a2SfFTyPSBf+GaTPoKJ3poj8U96YQ5ntvaAK28De4zifuwAX/PWqol+54/83XIBWvXTnWQY4I4UJvH29bleJjiMemqMwL78JStJcGZ9tm4uJoPmg83noblK/M2tsgGbrvGVoZkdzv9kbvVEv+vvuiai/i3pVfCrqG/ivgpMq2Avqsis+yN9M15xiH/NKUEjPLesrkkJ/rO3H7Jt150oUAv/3vORS31de5kr8PlWURLjzRLzYInOQmG8tmycZP1R1rinuf/32x3RoSL8mrvs2B4+NZ19736ZwMb8kLdgoDd1JtypKBJvILHZ3aq23n5OOs9XDjKZhZqU/JuKWqEMtZgvSEbwEdkpN+L1e3niJsh+FeE3jMnPr36iHZnHBv91jS288ZT9NwSLjECBiw0BWInrHbotlcti5OI3OZ7PV847dEsmU+Pqh9dFNj/Da8Pua2WCYnX0wngXq54aI5Us3KB1S3YlFrOtZm91sgzdpsiZpxVm91o2QrAD2JhRJpP92fBb8UDLdtm2L/T6RUrmY3N4B2zOZ13ja2DPZRxKWsktP+y0ac+yDu8Qf/v6yvG1DfXqRP7vuCQm3KvriK9rG8U3CVC2xbflz9UNzcoP3+hbD+Tiv1HxuK9jAlczfGf6I3mJhhz8yNn+6WohsT4psb0oWWspMbCX2MW19aJvqu5KGbp0mqLN6a+dTdGtIgdg99NOQQ9fWi9+3Pik/RZKedGmaH+4Yvj5NfulvM07qyeL8cMbDzH/nu1qvreZOvgRgnxk0GmTYVOiKxwHfM0I26XciJhPbFpcXtm9sIRTbNZ6NOWiOvi/2pnO5v3n7jzEMZpZ/iilpH7agQ438M3BLDH+t6WJf/FKZmukF4rE+OFaBm9tTzQ+dE8qVpDoCvG3tLZahW57z8xMYrZforOk/YfpGUmM3LtwoWhOkFj93NZk+QzJj7Y4Dvpb2MKBo3O5k8D1rb3bXtAJDlex5ZOmRpbH/bqHAvwxqZdQo+/fcdLj/FaJHxcuem5sbuJzThSf02EwY0MErqFAGjtteAN2iyvP+990vppULOcOafzdWt5mkFeKGH/tkxb4cOSufI39ubti/AvDsrn/ESUkFtWpG/qdzkxY6LNRsmxsVx0jW/5mNk/T17631uiOSq1pc7zt0LmieWBnLPWxFpy1JdWVvEFdwyPfs+HfeRggEONtgFCAH5hRs/9CVJfwI/TjRpnjacxX+l+IaouebiQqwo+vdPZuREDKG9hH+MrFPz8kOySjckFoNgsSBmxvJbWNrheLxjJccUaI8XPGa6JvK8HfzyWR/397QmkXIn9Ezh+ZLO4q7w/0p0131UOOJ43ysw7b8S+X1Ww0zpUBBvOU38bHDkBIzzbZcy6C+yrg0rH+a6aIx1WE3/9Z8cNYgF/ckMtExjtqi+ejCD+f+C0+nMOyTCutf/rDZUDYxyFe4CGQAijCjw6V4OfLZ94pXUv83I4e6KExQiXsKVJdpFJwjzjtEFR7nwhetN1SSQT+tAzH5lA+m/jcDLYJkk9uSor6fCn4bxbnw17ufFTiF2RxhzIq4cnhG+QeEM+PHwVepwv4kaMrWusP104Pvhxb9fS4zSktdDqyF9mwIGhXXkyDPMWPEEOunOA/Iklj7R0ifDEQPwTSaxwfyOVeLv5xDsv548nj2EE2alGJ3/NyJ0h+yeVhmVX8R8R9Acz+eGb8bzhfZUPFoppGdfGzt0cEBRd35LVzSHkB6eGjOu5ODsIlrOPlnDRQBF3uia2issrPSTBc9aNaLCIOBS7Oh3tg7YPiYlyi9vEfkanDhr3yXjx+ZKT8R+NAjzYSAR5q4i+taxro2Sloj82pRjrOM0Nullpa//z4NcJzR+zqGH2q/w2ZTD38bGalsiAdx3nP+QMIm0CQOwkKLhQxfv5JzydG37HGr2iNLq+5zy4udgMCQFi+RPzJzM0ixInIF7R8N6jE/6VPOpAAJwsSMXnNk5aRv94Gxkdkg5cKap8fPyJ/RPvsvQR4HbXw6/m7KEeObPs/XqbbTobADfCtTmXGT3ZepXK7yL36FRlzid/GI3uUdPji8RdUliiZjyL8covlqcK2XCP4piKD58Hflv0evcNutXR5bxgI8eNqFv+qd58iR3yXVpgtY/xIU0szooFRdhpqegtcymriRx7R0NTIvWaCpFxRh9wtfTbkPJbaduMFu5OvmeSso/KmLzwNd5ZNlerylVuOB6MmOvkCXzPQeCZqZm02VCe4UfK6B8ryyFwE/DA7nlOtyKavYwIWW3DTl3sWoBmRy9eYPb2TL37dA/uGfcTwxY60huZWFfhBaOVeR77o7Zd6xgTiXA9NOCkoQXGxZsFerLHKYnDQTfxsKTzxzGxPo366k7B8vTVHfmG1AOvOvipyNS9zwkZtpPvYhav3ObN32TxjAwWPfLjzmL2IcVhgk/14YJOSRz4ov2QlIQ5lY5eZHoboyjDAnW2IlK+2oV53nxMiUGwa7C3W7fGZodyXvXrbx+PsX3I45+zth51edsqs4l4F+Hhz8rLwXLbJxYIaQbIQlF7Z3CqDJXuyoJMx8l72EqQD4ieB9KonvepJIvwkwk8i/CTCTyL8JMJPIvwkwk8i/CTCTyL8JMJPIvwkwk8i/CTCTyL8JMJPIvwkwk8i/CTCTyL8JMJPIvwkwk8i/CTCTyL8JMJPIvwkwk8i/CTCTyL8JMJPIvwkwk8i/CTCTyL8JMJPIvwkwk8i/CTCTxLrfxgj76BmEdnOAAAAAElFTkSuQmCC" style="z-index: 1;">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+                            <a href="http://www.shangrilabank.com/" target="_blank" rel="noreferrer" style="z-index: 1;">
+                                <img src="laxmi%20bank_files/xshangrilla-development-bank.png" style="z-index: 1;">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+
+                            <a href="http://www.srdb.com.np/content/pages.php?link=E-Banking_services" style="z-index: 1;">
+                                <img src="laxmi%20bank_files/xshine-resunga.png" style="z-index: 1;">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+
+                            <a href="http://www.siddharthabank.com/" target="_blank" rel="noreferrer" style="z-index: 1;">
+                                <img src="laxmi%20bank_files/xsiddharthabank.png" style="z-index: 1;">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+                            <a href="https://www.sunrisebank.com.np/ibn/login.php" target="_blank" rel="noreferrer" style="z-index: 1;">
+                                <img src="laxmi%20bank_files/xsunrise-bank.png" style="z-index: 1;">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+                            <a href="http://www.tinaubank.com/content/mobile-banking.html" target="_blank" rel="noreferrer" style="z-index: 1;">
+                                <img src="laxmi%20bank_files/xtinau-development-bank.png" style="z-index: 1;">
+                            </a>
+
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+                            <a href="http://www.adbl.gov.np/" target="_blank" rel="noreferrer" style="z-index: 1;">
+                                <img src="laxmi%20bank_files/xadbl.png" style="z-index: 1;">
+                            </a>
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <!--<div>
+                            <a href="http://www.trivenibank.com/" target="_blank" rel="noreferrer">
+                                <img src="https://cdn.esewa.com.np/ui/images/banks/garima_bikash_bank.png">
+                            </a>
+                        </div>-->
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+                            <a href="http://www.ufl.com.np/" target="_blank" rel="noreferrer" style="z-index: 1;">
+                                <img src="laxmi%20bank_files/xunited-finance.png" style="z-index: 1;">
+                            </a>
+
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+                            <a href="http://www.nepalbank.com.np/" target="_blank" rel="noreferrer" style="z-index: 1;">
+                                <img src="laxmi%20bank_files/xNepal_Bank.png" style="z-index: 1;">
+                            </a>
+
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+
+                        <div style="z-index: 1; top: 0px; left: 0px; width: 200px; height: 200px; position: absolute; overflow: hidden; transform: translate3d(-200px, 0px, 0px);">
+                            <a href="http://www.pokharafinance.com.np/" target="_blank" rel="noreferrer" style="z-index: 1;">
+                                <img src="laxmi%20bank_files/xPokhara_Finance.png" style="z-index: 1;">
+                            </a>
+
+                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px; background: rgba(0, 0, 0, 0.7) url(&quot;img/loading.gif&quot;) no-repeat scroll 50% 50%; width: 200px; height: 200px; z-index: 1000; display: none;"></div></div>
+
+
+                    </div></div></div></div>
+            </div>
+        </div>
+        <div class="row mn footer-top">
+            <div class="col-lg-2 pn footer-col">
+                <h5>Policy</h5>
+                <ul class="footer-list">
+                    <li><a target="_blank" rel="noreferrer" href="https://blog.esewa.com.np/privacy-policy">Privacy
+                        Policy</a>
+                    </li>
+                    <li><a target="_blank" rel="noreferrer" href="https://blog.esewa.com.np/terms-and-conditions">Terms
+                        and conditions</a>
+                    </li>
+                    <li><a target="_blank" rel="noreferrer" href="https://blog.esewa.com.np/report-fraud-and-misuse">Report
+                        Fraud or Misuse of Account</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-2 footer-col">
+                <h5>General</h5>
+                <ul class="footer-list">
+                    <li><a target="_blank" rel="noreferrer" href="https://blog.esewa.com.np/getting-started">Getting
+                        Started</a></li>
+                    <li><a target="_blank" rel="noreferrer" href="https://blog.esewa.com.np/security">Security</a></li>
+                    <li><a target="_blank" rel="noreferrer" href="https://blog.esewa.com.np/sms-syntax">SMS Syntax</a>
+                    </li>
+                    <li><a target="_blank" rel="noreferrer" href="https://blog.esewa.com.np/reward-point">Reward
+                        Points</a></li>
+                    <li><a target="_blank" rel="noreferrer" href="https://blog.esewa.com.np/video">Video Tutorials</a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="col-lg-2 footer-col">
+                <h5>Company</h5>
+                <ul class="footer-list">
+                    <li><a target="_blank" rel="noreferrer" href="https://blog.esewa.com.np/about-eSewa">About us</a>
+                    </li>
+                    <li><a target="_blank" rel="noreferrer" href="https://blog.esewa.com.np/career-opportunities-with-esewa">Career</a></li>
+                    <li><a target="_blank" rel="noreferrer" href="https://blog.esewa.com.np/">Blog/News</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-2 footer-col">
+                <h5>Partners</h5>
+                <ul class="footer-list">
+                    <li><a target="_blank" rel="noreferrer" href="https://blog.esewa.com.np/banks">Banks</a></li>
+                    <li><a ng-click="goToState(StateConstant.WU)">Western Union</a></li>
+                </ul>
+            </div>
+            <!--<div class="col-lg-2 pn">
+                <h5>Merchant</h5>
+                <ul class="footer-list">
+                    <li><a>Become a Merchant</a></li>
+                    <li><a>Developers Guide</a></li>
+                </ul>
+            </div>-->
+            <div class="col-lg-2 pn footer-col">
+                <h5>Help</h5>
+                <ul class="footer-list">
+                    <li><a target="_blank" rel="noreferrer" href="https://developer.esewa.com.np/">Developer's Guide</a>
+                    </li>
+                    <li><a target="_blank" rel="noreferrer" href="https://blog.esewa.com.np/faq">FAQ's</a></li>
+                    <!--<li><a>Video Tutorials</a></li>-->
+                    <li><a target="_blank" rel="noreferrer" href="https://blog.esewa.com.np/contact-us">Contact us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <hr style="border-top: 1px solid #ccc;">
+        <div class="row mn footer-middle">
+            <div class="col-lg-4 pn">
+                <!--mobile application page link : ng-click="goToState(StateConstant.MOBILE_APPS)"-->
+                <h5 class="">Download Mobile Apps</h5>
+                <div class="row mn">
+                    <a title="Play Store" target="_blank" rel="noreferrer" href="https://play.google.com/store/apps/details?id=com.f1soft.esewa&amp;hl=en" class="mobile-app android"></a>
+                    <a title="App Store" target="_blank" rel="noreferrer" href="https://itunes.apple.com/np/app/esewa/id614370939?mt=8" class="mobile-app apple"></a>
+                </div>
+            </div>
+            <div class="col-lg-4 center">
+                <h5 class="text-center">Keep in touch</h5>
+                <div class="row social-links">
+                    <a title="Facebook" target="_blank" rel="noreferrer" href="https://www.facebook.com/esewa/" class="social-icons social-facebook"></a>
+                    <a title="Twitter" target="_blank" rel="noreferrer" href="https://twitter.com/esewanepal" class="social-icons social-twitter"></a>
+                    <a title="Youtube" target="_blank" rel="noreferrer" href="https://www.youtube.com/c/eSewaFonepay?sub_confirmation=1" class="social-icons social-youtube"></a>
+                    <a title="Linkedin" target="_blank" rel="noreferrer" href="https://www.linkedin.com/company-beta/2832447/" class="social-icons social-linkedin"></a>
+                </div>
+            </div>
+            <div class="col-lg-4 subscription prn">
+                <h5 class="footer-titles">Subscribe</h5>
+                <input name="subscription" type="email" placeholder="Enter email address to get latest updates" class="form-control">
+                <button class="btn btn-success btn-raised btn-subscribed">Subscribe</button>
+                <!--<h6>Register now to get updates on promotions</h6>-->
+            </div>
+        </div>
+        <hr style="border-top: 1px solid #ccc;">
+        <div class="row mn footer-bottom">
+            <div class="col-lg-6 pn">
+                <h6>eSewa 2009-2019. All Right Reserved</h6>
+            </div>
+            <div class="col-lg-6 pn">
+                <img class="img-responsive pull-right footer-logo" src="laxmi%20bank_files/esewa-logo.png" alt="eSewa">
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<a id="scrollup" class="ng-scope" style="display: none;">
+    <span class="glyphicon glyphicon-arrow-up"></span>
+</a>
+<script type="text/javascript" class="ng-scope">$(document).ready(function(){$(window).scroll(function(){if($(this).scrollTop()>100){$('#scrollup').fadeIn();}else{$('#scrollup').fadeOut();}});$('#scrollup').click(function(){$("html, body").animate({scrollTop:0},600);return false;});});$(document).ready(function(){$('#TollFreeButton').click(function(){$('.toll-free-content').css('display','block');$('#TollFreeButton').css('display','none');});$('#TollFreeContent').click(function(){$('.toll-free-content').css('display','none');$('#TollFreeButton').css('display','block');});});$(document).ready(function(){var userAgent=navigator.userAgent||navigator.vendor||window.opera;if(/windows phone/i.test(userAgent)){$(".mobile-view").addClass("windows-view");}if(/android/i.test(userAgent)){$(".mobile-view").addClass("android-view");}if(/iPad|iPhone|iPod/.test(userAgent)&&!window.MSStream){$(".mobile-view").addClass("iphone-view");}});</script>
+<script class="ng-scope">(function($){$("#but label").click(function(e){e.stopPropagation();var pos=$(this).offset(),div=$("#mydiv");$("#mydiv").animate({width:"100%",opacity:1,fontSize:"3em",borderWidth:"10px",},0);div.css({"display":"block","position":"absolute","fontSize":"3em"});div.animate({"left":-158,"top":-45},200);div.animate({"left":-158,"top":-45},200);});$(document).click(function(e){$('#mydiv').fadeOut(500);$('#mydiv').animate({width:"100%",opacity:0,fontSize:"3em",borderWidth:"10px",left:+100},200).css({"display":"none"});});})(jQuery);</script>
+<script type="text/javascript" class="ng-scope">jssor_1_slider_init();</script>
+<script class="ng-scope">document.addEventListener("touchstart",function(){},true);</script>
+<style class="ng-scope">.footer-col{width:20%!important}.fb_reset>div{right:20pt!important;bottom:65pt!important}.fb-customerchat iframe{bottom:110pt!important}</style>
+
+</div> </div> <script src="laxmi%20bank_files/BreadCrumbs.js"></script> <script src="laxmi%20bank_files/select.js"></script> <script src="laxmi%20bank_files/angular-sanitize.js"></script> <script src="laxmi%20bank_files/slider.js"></script> <script src="laxmi%20bank_files/esewa-messages-2.js"></script> <script src="laxmi%20bank_files/esewa-components-2.js"></script> <script src="laxmi%20bank_files/ec-shared-1.js"></script> <script src="laxmi%20bank_files/ec-payment-menu-1.js"></script> <script src="laxmi%20bank_files/ec-payment-1.js"></script> <script src="laxmi%20bank_files/ec-profile-1.js"></script> <script src="laxmi%20bank_files/main.js"></script>  <div class="modal-backdrop fade in" modal-animation-class="fade" modal-in-class="in" ng-style="{'z-index': 1040 + (index &amp;&amp; 1 || 0) + index*10}" modal-backdrop="modal-backdrop" modal-animation="true" style="z-index: 1040;"></div><div modal-render="true" tabindex="-1" role="dialog" class="modal fade ng-isolate-scope in" modal-animation-class="fade" modal-in-class="in" ng-style="{'z-index': 1050 + index*10, display: 'block'}" ng-click="close($event)" modal-window="modal-window" size="lg" index="0" animate="animate" modal-animation="true" style="z-index: 1050; display: block;">
+    <div class="modal-dialog modal-lg" ng-class="size ? 'modal-' + size : ''"><div class="modal-content" modal-transclude=""><!-- ngIf: $state.current.name==='merchant.transaction' --> <div class="fund-transfer-confirmation airlines-transaction-details ng-scope"> <div class="panel panel-default"> <div class="panel-heading"> <div class="row"> <div class="col-sm-10"> <!-- ngIf: !transactionDetails.properties.outboundFlightNumber --><div class="service-image-detail ng-scope" ng-if="!transactionDetails.properties.outboundFlightNumber"> <!-- ngIf: transactionDetails.product_logo_url --><img ng-if="transactionDetails.product_logo_url " src="laxmi%20bank_files/laxmi_logo.png" alt="eSewa to Laxmi Bank Ltd." class="ng-scope"><!-- end ngIf: transactionDetails.product_logo_url --> <img ng-hide="transactionDetails.product_logo_url" src="laxmi%20bank_files/esewa-icon-large.png" alt="Logo" style="filter: grayscale(100%)" class="ng-hide"> </div><!-- end ngIf: !transactionDetails.properties.outboundFlightNumber --> <!-- ngIf: transactionDetails.properties.outboundFlightNumber --> <strong class="product_name_statement ng-binding">eSewa to Laxmi Bank Ltd.</strong> </div> </div> </div> <div class="panel-body mobile-container" style="padding-top: 10px"> <div> <strong>Transaction Detail</strong> <!-- ngIf: (transactionDetails.transaction_status === 'COMPLETE' && transactionDetails.properties.outboundFlightNumber) || !transactionDetails.properties.outboundFlightNumber --><div class="col-sm-2 pull-right ng-scope" ng-controller="PdfDownloadController" ng-if="(transactionDetails.transaction_status === 'COMPLETE' &amp;&amp; transactionDetails.properties.outboundFlightNumber) || !transactionDetails.properties.outboundFlightNumber"> <!-- ngIf: transactionDetails.transaction_status==='COMPLETE' --><a ng-click="getPdf(transactionId,moduleId,transactionDetails.properties.outboundFlightNumber,transaction_version)" ng-if="transactionDetails.transaction_status==='COMPLETE'" class="pull-right pdf-icon ng-scope" style="margin-top: 0px"><img src="laxmi%20bank_files/pdf_icon.png"></a><!-- end ngIf: transactionDetails.transaction_status==='COMPLETE' --> </div><!-- end ngIf: (transactionDetails.transaction_status === 'COMPLETE' && transactionDetails.properties.outboundFlightNumber) || !transactionDetails.properties.outboundFlightNumber --> </div> <hr style="margin-top: 10px"> <div ng-show="!transactionDetails" class="text-center ng-hide"> <span> <img src="laxmi%20bank_files/transaction-load.gif" style="padding-right: 4px;padding-bottom: 4px">Loading ...</span> </div> <div class="theme_box clearfix" ng-show="transactionDetails"> <div class="col-sm-4"> <span class="lr">Reference Code</span> <p class="fields ng-binding">02AT5NI</p> </div> <!-- ngIf: transactionDetails.created --><div ng-if="transactionDetails.created" class="col-sm-4 ng-scope"> <span class="lr"> Date/Time</span> <p class="fields ng-binding"> 16 Jan 2019, 4:29 PM </p> </div><!-- end ngIf: transactionDetails.created --> <!-- ngIf: transactionDetails.channel --><div ng-if="transactionDetails.channel" class="col-sm-4 ng-scope"> <span class="lr"> Channel</span> <p class="fields ng-binding">Web</p> </div><!-- end ngIf: transactionDetails.channel --> <!-- ngIf: transactionDetails.processed_by --><div ng-if="transactionDetails.processed_by" class="col-sm-4 ng-scope"> <span class="lr">Processed By</span> <p class="fields ng-binding"> 9842641628</p> </div><!-- end ngIf: transactionDetails.processed_by --> <div ng-show="transactionDetails.amount" class="col-sm-4"> <span class="lr">Amount (NPR)</span> <p class="fields ng-binding" style="color: #60bb46"> 2,712.00</p> </div> <!-- ngIf: transactionDetails.transaction_status --><div ng-if="transactionDetails.transaction_status" class="col-sm-4 ng-scope"> <span class="lr"> Status</span> <p class="fields ng-binding"> COMPLETE <img class="status" src="laxmi%20bank_files/active_user.png" ng-show="transactionDetails.transaction_status === 'COMPLETE'" title="Complete"> <img class="status ng-hide" src="laxmi%20bank_files/orange_error.png" ng-show="transactionDetails.transaction_status === 'PENDING' " title="Pending"> <img class="status ng-hide" src="laxmi%20bank_files/red_cancel.png" ng-show="transactionDetails.transaction_status === 'CANCELED' " title="Cancelled"> <img class="status ng-hide" src="laxmi%20bank_files/red_cancel.png" ng-show="transactionDetails.transaction_status === 'TIMEOUT' " title="Time out"> <span ng-show="transactionDetails.transaction_status === 'AMBIGUOUS' " class="glyphicon glyphicon-question-sign ng-hide" style="color:orange;font-size: 17px" aria-hidden="true"></span> </p> </div><!-- end ngIf: transactionDetails.transaction_status --> </div> <hr style="margin-top: 10px"> <!-- ngRepeat: (propertyKey,propertyValue) in transactionDetails.properties --><!-- ngIf: !transactionDetails.properties.outboundFlightNumber --><div ng-if="!transactionDetails.properties.outboundFlightNumber" ng-repeat="(propertyKey,propertyValue) in transactionDetails.properties" class="ng-scope"> <!-- ngIf: propertyValue && doesNotMatch(propertyKey) --><div class="col-sm-4 ng-scope" ng-if="propertyValue &amp;&amp; doesNotMatch(propertyKey)"> <span class="lr ng-binding">Sender Name</span> <p class="fields ng-binding"> ANKIT KUMAR KARNA </p> </div><!-- end ngIf: propertyValue && doesNotMatch(propertyKey) --> </div><!-- end ngIf: !transactionDetails.properties.outboundFlightNumber --><!-- end ngRepeat: (propertyKey,propertyValue) in transactionDetails.properties --><!-- ngIf: !transactionDetails.properties.outboundFlightNumber --><div ng-if="!transactionDetails.properties.outboundFlightNumber" ng-repeat="(propertyKey,propertyValue) in transactionDetails.properties" class="ng-scope"> <!-- ngIf: propertyValue && doesNotMatch(propertyKey) --><div class="col-sm-4 ng-scope" ng-if="propertyValue &amp;&amp; doesNotMatch(propertyKey)"> <span class="lr ng-binding">Sender eSewa Id</span> <p class="fields ng-binding"> 9842641628 </p> </div><!-- end ngIf: propertyValue && doesNotMatch(propertyKey) --> </div><!-- end ngIf: !transactionDetails.properties.outboundFlightNumber --><!-- end ngRepeat: (propertyKey,propertyValue) in transactionDetails.properties --><!-- ngIf: !transactionDetails.properties.outboundFlightNumber --><div ng-if="!transactionDetails.properties.outboundFlightNumber" ng-repeat="(propertyKey,propertyValue) in transactionDetails.properties" class="ng-scope"> <!-- ngIf: propertyValue && doesNotMatch(propertyKey) --><div class="col-sm-4 ng-scope" ng-if="propertyValue &amp;&amp; doesNotMatch(propertyKey)"> <span class="lr ng-binding">Destination Account Number</span> <p class="fields ng-binding"> 00711108352 </p> </div><!-- end ngIf: propertyValue && doesNotMatch(propertyKey) --> </div><!-- end ngIf: !transactionDetails.properties.outboundFlightNumber --><!-- end ngRepeat: (propertyKey,propertyValue) in transactionDetails.properties --><!-- ngIf: !transactionDetails.properties.outboundFlightNumber --><div ng-if="!transactionDetails.properties.outboundFlightNumber" ng-repeat="(propertyKey,propertyValue) in transactionDetails.properties" class="ng-scope"> <!-- ngIf: propertyValue && doesNotMatch(propertyKey) --><div class="col-sm-4 ng-scope" ng-if="propertyValue &amp;&amp; doesNotMatch(propertyKey)"> <span class="lr ng-binding">Destination Bank Name</span> <p class="fields ng-binding"> LAXMI BANK LTD. </p> </div><!-- end ngIf: propertyValue && doesNotMatch(propertyKey) --> </div><!-- end ngIf: !transactionDetails.properties.outboundFlightNumber --><!-- end ngRepeat: (propertyKey,propertyValue) in transactionDetails.properties --><!-- ngIf: !transactionDetails.properties.outboundFlightNumber --><div ng-if="!transactionDetails.properties.outboundFlightNumber" ng-repeat="(propertyKey,propertyValue) in transactionDetails.properties" class="ng-scope"> <!-- ngIf: propertyValue && doesNotMatch(propertyKey) --><div class="col-sm-4 ng-scope" ng-if="propertyValue &amp;&amp; doesNotMatch(propertyKey)"> <span class="lr ng-binding">Account Holder Name</span> <p class="fields ng-binding"> Gurkha.host Pvt. Ltd. </p> </div><!-- end ngIf: propertyValue && doesNotMatch(propertyKey) --> </div><!-- end ngIf: !transactionDetails.properties.outboundFlightNumber --><!-- end ngRepeat: (propertyKey,propertyValue) in transactionDetails.properties --><!-- ngIf: !transactionDetails.properties.outboundFlightNumber --><div ng-if="!transactionDetails.properties.outboundFlightNumber" ng-repeat="(propertyKey,propertyValue) in transactionDetails.properties" class="ng-scope"> <!-- ngIf: propertyValue && doesNotMatch(propertyKey) --><div class="col-sm-4 ng-scope" ng-if="propertyValue &amp;&amp; doesNotMatch(propertyKey)"> <span class="lr ng-binding">Remarks</span> <p class="fields ng-binding"> Bill sharing </p> </div><!-- end ngIf: propertyValue && doesNotMatch(propertyKey) --> </div><!-- end ngIf: !transactionDetails.properties.outboundFlightNumber --><!-- end ngRepeat: (propertyKey,propertyValue) in transactionDetails.properties --> <!-- ngIf: transactionDetails.properties.outboundFlightNumber --> <div class="panel-footer row mn visible-xs"> <button type="button" ng-click="cancel()" class="btn btn-success pull-right" ng-disabled="disableSubmit">Close </button> </div> </div> <!-- ngInclude: --><ng-include src="'html/analaytics/conversion_content.html' | cdn" class="ng-scope"> <div class="ng-scope">
+
+                <!-- Facebook Pixel Code -->
+                <script>setTimeout(function(){if(window.location.href.indexOf('transaction')>0){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1637727613162908');fbq('track','PageView');}},100);</script>
+                <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1637727613162908&ev=PageView&noscript=1"/></noscript>
+                <!-- DO NOT MODIFY -->
+                <!-- End Facebook Pixel Code -->
+
+
+                <script type="text/javascript">setTimeout(function(){if(window.location.href.indexOf('transaction')>0){var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-120229899-1"]);_gaq.push(["_trackPageview"]);(function(){var ga=document.createElement("script");ga.type="text/javascript";ga.async=true;ga.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(ga,s);})();}},100);</script>
+
+                <script>setTimeout(function(){if(window.location.href.indexOf('transaction')>0){var scope=angular.element(document.getElementsByClassName('fund-transfer-confirmation')).scope();function getParameterByName(name,url){if(!url)url=window.location.href;name=name.replace(/[\[\]]/g,'\\$&');var regex=new RegExp('[?&]'+name+'(=([^&#]*)|&|#|$)'),results=regex.exec(url);if(!results)return null;if(!results[2])return'';return decodeURIComponent(results[2].replace(/\+/g,' '));}var campaignList=['topup_up_to_100','NEA_20_cashback','RT'];var runTrackerCode=false;for(var a=0;a<campaignList.length;a++){if(getParameterByName('utm_campaign')===campaignList[a]){runTrackerCode=true;break;}}if(runTrackerCode&&typeof fbq!=='undefined'){fbq('track','Purchase',{content_ids:[scope.transactionDetails.product_name],content_type:'product',value:scope.transactionDetails.amount,currency:'USD'});}}},100);</script>
+
+
+                <script async="" src="laxmi%20bank_files/js_002"></script>
+                <script>setTimeout(function(){if(window.location.href.indexOf('transaction')>0){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','UA-126551168-2');}},100);</script>
+                <script async="" src="laxmi%20bank_files/js"></script>
+                <script>setTimeout(function(){if(window.location.href.indexOf('transaction')>0){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-786804382');}},100);</script>
+                <script>setTimeout(function(){if(window.location.href.indexOf('transaction')>0){function gtag_report_conversion(url){var callback=function(){if(typeof(url)!='undefined'){window.location=url;}};gtag('event','conversion',{'send_to':'AW-786804382/Q4KICPv9jIoBEJ7dlvcC','transaction_id':'','event_callback':callback});return false;}}},100);</script>
+
+            </div>
+</ng-include> </div> </div> <style class="ng-scope">.fields{
+        font-weight: bold;
+        font-size: initial;
+        padding-bottom: 1%;
+        color: #3c3c3c;
+    }
+    .lr{
+        color: #646464 !important;
+    }
+    .status{
+        padding-left: 2px;
+        padding-bottom: 4px;
+    }
+    .service-image-detail{
+        display: inline-block;
+        border-radius: 100%;
+        border: 1px solid #ddd;
+        height: 50px;
+        width: 50px;
+        background-color: #FFFFFF;
+    }
+    .service-image-detail img{
+        height: 48px;
+        width: 48px;
+        border: none;
+        border-radius: 0;
+        background: none;
+        padding: 7px;
+    }
+    .airline-logo {
+        display: contents !important;
+        border: none !important;
+    }</style></div></div>
+</div></body></html>

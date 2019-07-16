@@ -1,0 +1,54 @@
+{{!< layout}} 
+
+{{#extend "pageName"}} My Jobs {{/extend}}
+
+{{#extend "customCSS"}}
+    <link rel="stylesheet" href="/css/form.css">
+    <link rel="stylesheet" href="/css/postjob.css">
+{{/extend}}
+
+{{#extend "customJS"}}
+{{/extend}}
+
+{{#extend "heroTitle"}}My Jobs{{/extend}}
+
+{{#extend "breadcrumbs"}}
+<a href="">Home</a> / My Jobs
+{{/extend}}
+
+{{#extend "body"}}
+<section class="section">
+    <div class="title">My Jobs</div>
+    <div class="container content">
+        <div class="">
+
+            <div class="content container table-wrapper">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Job Vacancy</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each jobs}}
+                        <tr>
+                            <td>{{this.posted_on}}</td>
+                            <td class="font-weight-bold">{{this.title}}</td>
+                            <td class="font-weight-bold">{{this.expiry_date}}</td>
+                            <td>
+                                <a class="btn" href="/jobs/view/{{this.id}}"><i class="fa fa-eye"></i></a>
+                                <a class="btn btn-red" href="/jobs/{{this.id}}/delete"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</section>
+{{/extend}}
